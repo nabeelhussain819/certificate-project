@@ -20,3 +20,7 @@ Route::get('/', function () {
 
 Route::get('/get-pdf', [PdfController::class, 'getPDF']);
 Route::get('/pdf-view', [PdfController::class, 'pdfView']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
