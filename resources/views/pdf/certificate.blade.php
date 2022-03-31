@@ -13,6 +13,10 @@
             height: 0;
             clear: both;
         }
+
+        .detail-table th, .detail-table td {
+            padding: 15px;
+        }
     </style>
 </head>
 <body>
@@ -57,6 +61,28 @@
 </div>
 
 
+<div style="margin-top: 20px;text-align: center">
+    <table class="detail-table" style="text-align:center;width: 600px;margin:auto">
+        <tr>
+            <td>
+                Naveed
+                <br/>
+                <strong>Name</strong>
+            </td>
+            <td>Nasib <br/>
+                <strong>Geburtsdatum</strong></td>
+        </tr>
+        <tr>
+            <td>
+                Naveed
+                <br/>
+                <strong>Vorname</strong>
+            </td>
+            <td>Nasib <br/>
+                <strong>Geburtsort</strong></td>
+        </tr>
+    </table>
+</div>
 
 <!-- column 5 -->
 <div style="padding: 2% 5%">
