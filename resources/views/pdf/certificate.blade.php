@@ -17,6 +17,13 @@
         .detail-table th, .detail-table td {
             padding: 15px;
         }
+
+        .score-table th, .score-table td {
+            padding: 5px 0;
+            /*border:1px solid red;*/
+            margin: 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +91,57 @@
     </table>
 </div>
 
+<div style="margin-top: 20px;text-align: center">
+    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+        <tr>
+            <td> Geburtsort</td>
+            <td><u>20 </u> / 15 Punkte</td>
+        </tr>
+        <tr>
+            <td> Geburtsort</td>
+            <td><u>20 </u> / 15 Punkte</td>
+        </tr>
+        <tr>
+            <td> Geburtsort</td>
+            <td><u>20 </u> / 15 Punkte</td>
+        </tr>
+        <tr>
+            <td> Geburtsort</td>
+            <td><u>20 </u> / 15 Punkte</td>
+        </tr>
+        <tr>
+            <td> Geburtsort</td>
+            <td><u>20 </u> / 15 Punkte</td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 20px;text-align: center">
+    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+
+        <tr>
+            <td>&#10003; Geburtsort</td>
+            <td><u> </u> / 60 Punkte</td>
+        </tr>
+        <tr>
+            <td>&#10003; Geburtsort</td>
+            <td><u>20 </u> / 15 Punkte</td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 20px;text-align: center">
+    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+
+        <tr>
+            <td>Datum der Prüfung</td>
+            <td><u> </u> Ausweisnummer</td>
+            <td><u> </u> Ausstellungsdatum</td>
+        </tr>
+
+    </table>
+</div>
+<div style="page-break-before:always">&nbsp;</div>
 <!-- column 5 -->
 <div style="padding: 2% 5%">
     <h3 style="text-align: right">Geschaftsuhrer</h3>
