@@ -15,13 +15,14 @@
             :width="650"
             :visible="showModalCreate"
             title="Create Student"
-            ><create />
+            ><create @closeModal="handleCreateModal" />
         </a-modal>
     </div>
 </template>
 <script>
 import list from "./list";
 import create from "./create";
+
 export default {
     components: {
         list,

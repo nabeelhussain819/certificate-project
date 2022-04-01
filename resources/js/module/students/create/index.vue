@@ -46,40 +46,50 @@
                 ]"
             />
         </a-form-item>
-        <a-form>
-            <a-form-item class="text-right">
-                <ActionButton class="text-right" />
-            </a-form-item>
-        </a-form>
+
+        <a-form-item class="text-right">
+            <ActionButton
+                class="text-right"
+                :is-created="isCreated"
+                :loading="loading"
+                text="Save Student"
+            />
+        </a-form-item>
     </a-form>
 </template>
 
 <script>
 import ActionButton from "../../../components/form/ActionButton";
+import StudentServices from "../../../services/API/StudentServices";
+import notifications from "../../../mixins/notifications";
 export default {
     components: { ActionButton },
+    mixins: [notifications],
     data() {
         return {
             form: this.$form.createForm(this, { name: "studentCreate" }),
+            loading: false,
+            isCreated: false,
         };
     },
     methods: {
         onSubmit(e) {
+            this.loading = true;
             e.preventDefault();
             this.form.validateFields((err, values) => {
                 if (!err) {
                     this.loading = true;
-                    console.log(values);
-                    // PurchaseOrderServices.create(values)
-                    //     .then(response => {
-                    //         notification(this, response.message);
-                    //         location.reload();
-                    //     })
-                    //     .catch(error => {
-                    //         errorNotification(this, error);
-                    //     })
-                    //     .finally(() => (this.loading = false));
+
+                    StudentServices.create(values)
+                        .then((response) => {
+                            notification(this, response.message);
+                        })
+                        .catch((error) => {
+                            errorNotification(this, error);
+                        })
+                        .finally(() => (this.loading = false));
                 }
+                this.loading = false;
             });
         },
     },
