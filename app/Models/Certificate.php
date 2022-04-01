@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
+ * @property integer $student_id
  * @property integer $created_by
  * @property integer $updated_by
- * @property string $first
- * @property string $last
- * @property string $date_of_birth
- * @property string $place_of_birth
+ * @property string $type
  * @property string $created_at
  * @property string $updated_at
  * @property User $user
+ * @property User $updatedBy
+ * @property Student $student
  */
 class Certificate extends Model
 {
@@ -28,7 +28,7 @@ class Certificate extends Model
     /**
      * @var array
      */
-    protected $fillable = ['created_by', 'updated_by', 'first', 'last', 'date_of_birth', 'place_of_birth', 'created_at', 'updated_at'];
+    protected $fillable = ['student_id', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -44,5 +44,13 @@ class Certificate extends Model
     public function updatedBy()
     {
         return $this->belongsTo('App\Models\User', 'updated_by');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function student()
+    {
+        return $this->belongsTo('App\Models\Student');
     }
 }

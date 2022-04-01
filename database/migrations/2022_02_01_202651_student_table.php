@@ -12,15 +12,16 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('certificates', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->string('type')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('place_of_birth')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->cascadeOnUpdate();
             $table->foreign('updated_by')->references('id')->on('users')->cascadeOnUpdate();
-            $table->foreign('student_id')->references('id')->on('students')->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('certificates');
+        //
     }
 };
