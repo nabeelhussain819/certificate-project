@@ -15,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        return Student::orderBy('created_at', 'desc')->paginate($this->pageSize);
     }
 
     /**

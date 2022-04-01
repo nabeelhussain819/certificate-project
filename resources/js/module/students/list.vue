@@ -12,13 +12,13 @@
 const studentsColumn = [
     {
         title: "First Name",
-        dataIndex: "date_of_payment",
-        key: "date_of_payment",
+        dataIndex: "first_name",
+        key: "first_name",
     },
     {
         title: "Last Name",
-        dataIndex: "received_amount",
-        key: "received_amount",
+        dataIndex: "last_name",
+        key: "last_name",
     },
     {
         title: "Action",
@@ -27,9 +27,11 @@ const studentsColumn = [
     },
 ];
 export default {
+    props: {
+        data: { type: Array },
+    },
     data() {
         return {
-            data: [],
             studentsColumn,
         };
     },
