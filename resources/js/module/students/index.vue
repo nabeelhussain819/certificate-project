@@ -10,6 +10,7 @@
             <list />
         </a-card>
         <a-modal
+            :destroyOnClose="true"
             @cancel="handleCreateModal(false)"
             :footer="null"
             :width="650"

@@ -36,10 +36,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        DB::transaction(function () use ($request) {
+        return DB::transaction(function () use ($request) {
             $student = new Student();
             $student->fill($request->all());
             $student->save();
+            return $this->genericResponse(true, "student create successfully");
         });
     }
 

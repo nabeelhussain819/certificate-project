@@ -88,11 +88,10 @@ export default {
 
                     StudentServices.create(values)
                         .then((response) => {
-                            notification(this, response.message);
+                            this.success(response.message);
+                            this.$emit("closeModal", false);
                         })
-                        .catch((error) => {
-                            errorNotification(this, error);
-                        })
+                        .catch(this.error)
                         .finally(() => (this.loading = false));
                 }
                 this.loading = false;
