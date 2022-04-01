@@ -39,7 +39,9 @@ export default {
         };
     },
     methods: {
-        studentView() {},
+        studentView(record) {
+            this.$emit("print",record);
+        },
     },
 };
 </script>

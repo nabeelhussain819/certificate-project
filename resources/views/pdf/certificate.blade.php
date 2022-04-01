@@ -72,20 +72,20 @@
     <table class="detail-table" style="text-align:center;width: 600px;margin:auto">
         <tr>
             <td>
-                Naveed
+                {{$student->first_name}}
                 <br/>
                 <strong>Name</strong>
             </td>
-            <td>Nasib <br/>
+            <td>   {{$student->last}} <br/>
                 <strong>Geburtsdatum</strong></td>
         </tr>
         <tr>
             <td>
-                Naveed
+                {{$student->date_of_birth}}
                 <br/>
                 <strong>Vorname</strong>
             </td>
-            <td>Nasib <br/>
+            <td>{{$student->place_of_birth}} <br/>
                 <strong>Geburtsort</strong></td>
         </tr>
     </table>

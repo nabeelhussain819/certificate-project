@@ -8,7 +8,7 @@
                     type="primary"
                     >Add Student</a-button
                 >
-                <list :data="data" />
+                <list :data="data" @print="getCertificate" />
             </a-card>
         </a-spin>
         <a-modal
@@ -25,6 +25,7 @@
 <script>
 import list from "./list";
 import create from "./create";
+import CertificateService from "../../services/API/CertificateServices";
 import StudentServices from "../../services/API/StudentServices";
 export default {
     components: {
@@ -53,10 +54,15 @@ export default {
             this.loading = true;
             StudentServices.get(params)
                 .then((response) => {
-                    console.log(response.data);
                     this.data = response.data;
                 })
                 .finally(() => (this.loading = false));
+        },
+        getCertificate(student) {
+            window.location = `/certificate/student/${student.id}`;
+            // CertificateService.getStudentCertificate(student.id).then((response) => {
+            //     console.log(response);
+            // });
         },
     },
 };
