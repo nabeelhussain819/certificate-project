@@ -1,9 +1,12 @@
 <template>
     <a-table :columns="studentsColumn" :dataSource="data">
         <span slot="action" slot-scope="text, record">
-            <a-button v-on:click="studentView(record)" type="link"
-                ><a-icon type="appstore" theme="filled" />
-            </a-button>
+            <a-tooltip>
+                <template slot="title">Print Certificate </template>
+                <a-button v-on:click="studentView(record)" type="link">
+                    <a-icon type="printer" />
+                </a-button>
+            </a-tooltip>
         </span>
     </a-table>
 </template>
