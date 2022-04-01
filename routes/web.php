@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\StudentController;
+use  App\Http\Controllers\CertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +26,12 @@ Route::get('/pdf-view', [PdfController::class, 'pdfView']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::Resources([
+        'student' => StudentController::class,
+        'certificate' => App\Http\Controllers\CertificateController::class,
+    ]);
+
+});
