@@ -1,0 +1,22 @@
+.ant-btn {
+  height: 50px;
+  border-radius: 22px;
+}
+
+.ant-btn-primary {
+  background-color: #2255c2;
+  border-color: #2255c2;
+  &:hover {
+    background-color: #1749b5;
+    border-color: #1749b5;
+  }
+  &:focus {
+    background-color: #1749b5;
+    border-color: #1749b5;
+  }
+}
+.action-button{
+  background: #f1f1f1;
+  border: 1px solid transparent;
+  height: 40px;
+}

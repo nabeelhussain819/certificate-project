@@ -6,3 +6,15 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+
+@import './partials/color';
+@import './partials/mixin';
+@import './partials/margin';
+@import './partials/padding';
+@import './partials/grid';
+@import './partials/background-color';
+@import './partials/btn';
+@import './partials/helpers';
+@import './partials/border';

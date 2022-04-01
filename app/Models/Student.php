@@ -16,13 +16,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property Certificate[] $certificates
  * @property User $user
- * @property User $user
+ * @property User updatedBy
  */
 class Student extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -51,7 +51,7 @@ class Student extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function updatedBy()
     {
         return $this->belongsTo('App\Models\User', 'updated_by');
     }

@@ -1,0 +1,113 @@
+.rounded-table {
+  table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+    text-align: center;
+    vertical-align: middle;
+  }
+  table thead tr {
+    border-collapse: collapse;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #e2e2e2;
+    border-radius: 22px;
+    margin-top: 2rem;
+  }
+  .ant-table-thead tr th {
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    &:first-child {
+      border-bottom-left-radius: 40px;
+      border-top-left-radius: 40px;
+    }
+    &:last-child {
+      border-bottom-right-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+  }
+  .ant-table-tbody tr {
+    border-collapse: collapse;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #e2e2e2;
+    border-radius: 44px;
+    margin-top: 2rem;
+    color: #909090;
+    &:hover {
+      background-color: #fff;
+      cursor: pointer;
+    }
+  }
+  .ant-table-tbody td {
+    padding: 15px;
+    font-size: 14px;
+    vertical-align: middle;
+    color: #233151;
+    font-weight: 400;
+    &:hover {
+      background-color: #fff;
+      cursor: pointer;
+    }
+    &:first-child {
+      border-bottom-left-radius: 44px;
+      border-top-left-radius: 44px;
+    }
+    &:last-child {
+      border-bottom-right-radius: 44px;
+      border-top-right-radius: 44px;
+    }
+  }
+  .ant-pagination-item {
+    border-radius: 51px;
+    height: 35px;
+    width: 35px;
+    background-color: #FA6363;
+    color: white;
+    padding: 0.6rem 0.5rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 500;
+    min-width: 2.25rem;
+    border: none;
+
+    a {
+      color: white;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+  .ant-pagination-item-link {
+    color: #93a2dd;
+    font-size: 1.15em;
+    border: unset;
+    background: transparent;
+    font-weight: bold;
+  }
+
+  .ant-pagination {
+    width: 100%;
+    .ant-pagination-options {
+      float: left;
+      width: 85%;
+      .ant-select{
+        .ant-select-selection{
+          width: 150px;
+          text-align: center;
+          vertical-align: middle;
+          border-radius: 44px;
+          height: 50px;
+        }
+        .ant-select-selection__rendered{
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          padding-top: 7px;
+          padding-left: 19px;
+        }
+      }
+    }
+  }
+
+}

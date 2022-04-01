@@ -1,0 +1,14 @@
+.capsule {
+  color: white;
+  padding: 15px;
+}
+
+.danger-capsule {
+  background-color: $danger;
+  @extend .capsule;
+  @extend .default-border-radius;
+}
+
+.primary-capsule {
+  background-color: $primary-color;
+}

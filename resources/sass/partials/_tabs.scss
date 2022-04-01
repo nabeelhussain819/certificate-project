@@ -1,0 +1,59 @@
+.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab {
+  border: 1px solid #ececec;
+  border-radius: 30px;
+  margin-right: 9px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #fff;
+}
+.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
+  color: #3869d1;
+  background-color: #f2f5fb;
+}
+
+.ant-tabs-card-bar {
+  padding-bottom: 10px;
+  border-bottom: unset;
+}
+
+.default-tabs {
+  .ant-tabs {
+    .ant-tabs-left-bar,
+    .ant-tabs-right-bar {
+      .ant-tabs-tab {
+        text-align: left;
+        padding: 15px 25px;
+        height: auto;
+        background-color: #f9f9f9;
+        border-radius: 22px !important;
+        padding-left: 40px !important;
+        // margin: auto;
+        &::after {
+          content: '';
+          position: absolute;
+          height: 28px;
+          width: 28px;
+          left: 7px;
+          top: 50%;
+          bottom: 50%;
+          margin: auto;
+          background-size: 100%;
+          background-image: url(https://cgt-dev-ft.microsysx.com/images/v2/icons/circle.svg);
+        }
+      }
+      .ant-tabs-tab-active {
+        padding: 15px 25px;
+        padding-bottom: 15px !important;
+        &::after {
+          background-image: url(https://cgt-dev-ft.microsysx.com/images/v2/icons/circle-active.svg);
+        }
+      }
+    }
+
+    .ant-tabs-left-bar,
+    .ant-tabs-left-content {
+      border: none;
+    }
+  }
+}

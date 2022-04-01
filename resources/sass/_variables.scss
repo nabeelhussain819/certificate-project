@@ -5,3 +5,22 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+$grey: #ececec;
+$secondary-color: #fbfbfb;
+$primary-color: #2255c2;
+$danger: #fa6363;
+$success: #28a745;
+
+.error-notification {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  .ant-notification-notice-message {
+    color: $danger;
+    font-weight: bold;
+  }
+  .ant-notification-close-x {
+    color: white;
+    font-weight: bold;
+  }
+}

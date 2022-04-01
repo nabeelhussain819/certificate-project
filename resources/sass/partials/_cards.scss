@@ -1,0 +1,56 @@
+.grey-card{
+  background-color: #f9f9f9;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 44px;
+  padding: 1.5rem;
+  .ant-card{
+    box-shadow: 0 26px 120px rgb(0 0 0 / 4%);
+  }
+}
+
+.avatar-card {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  @extend .default-border-radius;
+  img {
+    object-fit: inherit;
+  }
+  .ant-card-meta-description,
+  .ant-card-meta-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .anticon-right {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    margin: auto;
+    bottom: 0;
+    height: 18px;
+    font-size: 24px;
+  }
+  //
+  &.bg-danger.white,
+  &.bg-primary.white {
+    color: white;
+    .ant-card-meta-description,
+    .ant-card-meta-title {
+      color: white;
+    }
+  }
+  &.ant-card-hoverable:hover {
+    color: white;
+    @extend .bg-primary;
+    .ant-card-meta-title,
+    .ant-card-meta-description {
+      color: white;
+    }
+  }
+}
+
+.default-card {
+  border-radius: 22px;
+  padding: 10px 15px;
+  box-shadow: 0 26px 120px rgb(0 0 0 / 4%);
+}
