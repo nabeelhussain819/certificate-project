@@ -30,6 +30,14 @@ class Certificate extends Model
      */
     protected $fillable = ['student_id', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
 
+    const TYPE = [
+        ['id' => 1, 'alias' => 'a1', 'name' => 'A1'],
+        ['id' => 2, 'alias' => 'a2', 'name' => 'A2'],
+        ['id' => 3, 'alias' => 'b1', 'name' => 'B1'],
+        ['id' => 4, 'alias' => 'b2', 'name' => 'B2'],
+        ['id' => 5, 'alias' => 'c1', 'name' => 'C1'],
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

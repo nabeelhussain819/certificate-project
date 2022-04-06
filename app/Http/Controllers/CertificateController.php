@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\StringHelper;
+use App\Models\Certificate;
 use App\Models\Student;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -17,6 +18,11 @@ class CertificateController extends Controller
     public function index()
     {
         //
+    }
+
+    public function getTypes()
+    {
+        return Certificate::TYPE;
     }
 
     /**

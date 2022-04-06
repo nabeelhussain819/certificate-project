@@ -20,21 +20,33 @@
             title="Create Student"
             ><create @closeModal="closeOnCreate" />
         </a-modal>
+        <a-modal
+            :destroyOnClose="true"
+            @cancel="handleGenerateCertificateModal(false)"
+            :footer="null"
+            :width="650"
+            :visible="showGenerateCertificateModal"
+            title="Generate Certificate"
+            ><generate-certificate @closeModal="handleGenerateCertificateModal" />
+        </a-modal>
     </div>
 </template>
 <script>
 import list from "./list";
 import create from "./create";
+import generateCertificate from "./certificate/generate";
 import CertificateService from "../../services/API/CertificateServices";
 import StudentServices from "../../services/API/StudentServices";
 export default {
     components: {
         list,
         create,
+        generateCertificate,
     },
     data() {
         return {
             showModalCreate: false,
+            showGenerateCertificateModal: false,
             data: [],
             loading: true,
         };
@@ -43,6 +55,9 @@ export default {
         this.fetch();
     },
     methods: {
+        handleGenerateCertificateModal(show) {
+            this.showGenerateCertificateModal = show;
+        },
         handleCreateModal(show) {
             this.showModalCreate = show;
         },
@@ -59,7 +74,9 @@ export default {
                 .finally(() => (this.loading = false));
         },
         getCertificate(student) {
-            window.location = `/certificate/student/${student.id}`;
+            console.log("student", student);
+            this.handleGenerateCertificateModal(true);
+            //   window.location = `/certificate/student/${student.id}`;
             // CertificateService.getStudentCertificate(student.id).then((response) => {
             //     console.log(response);
             // });

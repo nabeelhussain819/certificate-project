@@ -10,6 +10,13 @@ function get(params = {}) {
     });
 }
 
+function getTypes(params = {}) {
+    return request({
+        url: `${baseUrl}/get-types`,
+        params,
+    });
+}
+
 function getStudentCertificate(id, data) {
     return request({
         url: `${baseUrl}/student/${id}`,
@@ -30,6 +37,7 @@ const CertificateService = {
     get,
     getStudentCertificate,
     update,
+    getTypes,
 };
 
 export default CertificateService;
