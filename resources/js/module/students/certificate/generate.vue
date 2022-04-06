@@ -1,67 +1,79 @@
 <template>
     <a-spin :spinning="loading">
         <a-form
-            :label-col="{ span: 5 }"
-            :wrapper-col="{ span: 19 }"
+            :label-col="{ span: 6 }"
+            :wrapper-col="{ span: 18 }"
             @submit="onSubmit"
             :form="form"
         >
             <a-form-item label="Type">
-                <a-select>
+                <a-select
+                    v-decorator="[
+                        'type',
+                        {
+                            rules: [{ required: true }],
+                        },
+                    ]"
+                    @select="onTypeSelect"
+                >
                     <a-select-option
-                        v-decorator="[
-                            'type',
-                            {
-                                rules: [{ required: true }],
-                            },
-                        ]"
                         v-for="certificate in types"
                         :key="certificate.id"
-                        value="certificate.id"
+                        :data-hasLanguageModule="certificate.has_language"
                         >{{ certificate.name }}</a-select-option
                     >
                 </a-select>
             </a-form-item>
-            <a-form-item label="First Name">
+            <a-form-item label="Listening">
                 <a-input
                     v-decorator="[
-                        'first_name',
+                        'listening',
                         {
                             rules: [{ required: true }],
                         },
                     ]"
                 ></a-input>
             </a-form-item>
-            <a-form-item label="Last Name">
+            <a-form-item label="Reading">
                 <a-input
                     v-decorator="[
-                        'last_name',
+                        'reading',
                         {
                             rules: [{ required: true }],
                         },
                     ]"
                 ></a-input>
             </a-form-item>
-            <a-form-item label="Place of Birth">
+            <a-form-item v-if="hasLanguageModule" label="Language Modules">
                 <a-input
                     v-decorator="[
-                        'place_of_birth',
+                        'language_module',
                         {
                             rules: [{ required: true }],
                         },
                     ]"
                 ></a-input>
             </a-form-item>
-            <a-form-item label="Date Of Birth"
-                ><a-date-picker
-                    class="w-100"
+            <a-form-item label="Writing">
+                <a-input
                     v-decorator="[
-                        'date_of_birth',
+                        'writing',
                         {
                             rules: [{ required: true }],
                         },
                     ]"
-                />
+                ></a-input>
+            </a-form-item>
+            <a-form-item label="Oral">
+                <a-input-number
+                    width="100%"
+                    v-decorator="[
+                        'oral',
+                        {
+                            rules: [{ required: true }],
+                        },
+                    ]"
+                ></a-input-number>
             </a-form-item>
 
             <a-form-item
@@ -73,7 +85,7 @@
                     class="text-right"
                     :is-created="isCreated"
                     :loading="loading"
-                    text="Save Student"
+                    text="Generate Certificate"
                 />
             </a-form-item>
         </a-form>
@@ -94,6 +106,7 @@ export default {
             loading: false,
             isCreated: false,
             types: [],
+            hasLanguageModule: false,
         };
     },
     mounted() {
@@ -122,6 +135,11 @@ export default {
                 }
                 this.loading = false;
             });
+        },
+        onTypeSelect(type, record) {
+            this.hasLanguageModule =
+                record.data.attrs["data-hasLanguageModule"];
+            console.log(type, record.data.attrs["data-hasLanguageModule"]);
         },
     },
 };
