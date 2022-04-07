@@ -27,7 +27,9 @@
             :width="650"
             :visible="showGenerateCertificateModal"
             title="Generate Certificate"
-            ><generate-certificate @closeModal="handleGenerateCertificateModal" />
+            ><generate-certificate
+                @closeModal="handleGenerateCertificateModal"
+            />
         </a-modal>
     </div>
 </template>
@@ -74,9 +76,9 @@ export default {
                 .finally(() => (this.loading = false));
         },
         getCertificate(student) {
-            console.log("student", student);
-            this.handleGenerateCertificateModal(true);
-            //   window.location = `/certificate/student/${student.id}`;
+            // console.log("student", student);
+            // this.handleGenerateCertificateModal(true);
+            window.location = `/certificate/student/${student.id}`;
             // CertificateService.getStudentCertificate(student.id).then((response) => {
             //     console.log(response);
             // });
