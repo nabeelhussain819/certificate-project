@@ -147,8 +147,8 @@
     <!-- column 5 -->
     <div style="padding: 0%">
         <h3 style="text-align: right">Geschaftsuhrer</h3>
-        <img  src="{{ public_path('/images/pdf/flag.png') }}" style="display:block;max-width: 550px"
-                alt="logo1" />
+        <img  src="{{ public_path('/images/pdf/flag.JPG') }}" style="display:block;max-width: 100px"
+                alt="flag" />
     </div>
     <br />
     <div style="page-break-before:always">&nbsp;</div>
@@ -386,16 +386,16 @@
         </div> --}}
         </div>
         <!-- column 4 -->
-        <table>
+        <table style="min-width:100%;">
             <tr>
                 <td>
                     <img
-                    src="{{ public_path('/images/pdf/main-heading.jpeg') }}" style="display:block;max-width: 550px"
-                    alt="logo1" />
+                    src="{{ public_path('/images/pdf/main-logo2.JPG') }}" style="display:block;max-width: 105px"
+                    alt="logo-2" />
                 </td>
                 <td>
                     <div style="font-size: 11px;">
-                        <span>Notenstufe und Notenschlüssel </span>
+                        <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
                         <ul>
                             <li>sehr gut (1): (60 – 54 der Gesamtpunkte)</li>
                             <li>gut (2): (53 – 48 der Gesamtpunkte)</li>
@@ -407,7 +407,7 @@
                 </td>
                 <td>
                     <img
-                    src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 400px"
+                    src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 120px"
                     alt="logo2" />
 
                 </td>
