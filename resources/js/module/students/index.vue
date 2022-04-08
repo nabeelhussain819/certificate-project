@@ -28,6 +28,7 @@
             :visible="showGenerateCertificateModal"
             title="Generate Certificate"
             ><generate-certificate
+                :student="student"
                 @closeModal="handleGenerateCertificateModal"
             />
         </a-modal>
@@ -51,6 +52,7 @@ export default {
             showGenerateCertificateModal: false,
             data: [],
             loading: true,
+            student: {},
         };
     },
     mounted() {
@@ -77,11 +79,14 @@ export default {
         },
         getCertificate(student) {
             // console.log("student", student);
-            // this.handleGenerateCertificateModal(true);
-            window.location = `/certificate/student/${student.id}`;
-            // CertificateService.getStudentCertificate(student.id).then((response) => {
-            //     console.log(response);
-            // });
+            this.student = student;
+            this.handleGenerateCertificateModal(true);
+            // window.location = `/certificate/student/${student.id}`;
+            // CertificateService.getStudentCertificate(student.id).then(
+            //     (response) => {
+            //         console.log(response);
+            //     }
+            // );
         },
     },
 };

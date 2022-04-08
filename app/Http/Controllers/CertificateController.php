@@ -35,9 +35,11 @@ class CertificateController extends Controller
         //
     }
 
-    public function getStudentCertificatePdf(Student $student)
+    public function getStudentCertificatePdf(Request $request, Student $student)
     {
-        $pdf = Pdf::loadView('pdf.certificate', compact('student'));
+        $data = $request->all();
+        $data['typeName'] = "A1";
+        $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));
         $fileName = StringHelper::trimLower($student->first_name . $student->last_name) . '.pdf';
         return $pdf->download($fileName);
     }

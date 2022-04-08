@@ -98,6 +98,11 @@ import StudentServices from "../../../services/API/StudentServices";
 import CertificateService from "../../../services/API/CertificateServices";
 import notifications from "../../../mixins/notifications";
 export default {
+    props: {
+        student: {
+            type: Object,
+        },
+    },
     components: { ActionButton },
     mixins: [notifications],
     data() {
@@ -121,10 +126,17 @@ export default {
         onSubmit(e) {
             this.loading = true;
             e.preventDefault();
+            let url = ` /certificate/student/${this.student.id}?`;
+
             this.form.validateFields((err, values) => {
                 if (!err) {
                     this.loading = true;
-                    console.log("values", values);
+
+                    for (const key in values) {
+                        url += `${key}=${values[key]}&`;
+                    }
+                    window.location = url;
+                    // window.location = `/certificate/student/${student.id}`;
                     // StudentServices.create(values)
                     //     .then((response) => {
                     //         this.success(response.message);
@@ -135,6 +147,7 @@ export default {
                 }
                 this.loading = false;
             });
+            this.loading = false;
         },
         onTypeSelect(type, record) {
             this.hasLanguageModule =
