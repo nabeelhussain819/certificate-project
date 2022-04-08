@@ -136,14 +136,8 @@ export default {
                         url += `${key}=${values[key]}&`;
                     }
                     window.location = url;
-                    // window.location = `/certificate/student/${student.id}`;
-                    // StudentServices.create(values)
-                    //     .then((response) => {
-                    //         this.success(response.message);
-                    //         this.$emit("closeModal", false);
-                    //     })
-                    //     .catch(this.error)
-                    //     .finally(() => (this.loading = false));
+                    this.success("Downloading");
+                    this.$emit("closeModal", false);
                 }
                 this.loading = false;
             });
