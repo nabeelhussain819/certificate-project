@@ -31,7 +31,7 @@ class Student extends Base
     /**
      * @var array
      */
-    protected $fillable = ['created_by', 'updated_by', 'first_name', 'last_name', 'date_of_birth', 'place_of_birth', 'created_at', 'updated_at'];
+    protected $fillable = ['created_by', 'guid', 'updated_by', 'first_name', 'last_name', 'date_of_birth', 'place_of_birth', 'created_at', 'updated_at'];
 
     protected $casts = [
         'date_of_birth' => 'date',
