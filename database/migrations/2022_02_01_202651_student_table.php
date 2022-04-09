@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->cascadeOnUpdate();
             $table->foreign('updated_by')->references('id')->on('users')->cascadeOnUpdate();
+            $table->uuid('guid')->unique();
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('students');
     }
 };

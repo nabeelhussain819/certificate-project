@@ -9,7 +9,7 @@
             <a-form-item label="Type">
                 <a-select
                     v-decorator="[
-                        'type',
+                        'type_id',
                         {
                             rules: [{ required: true }],
                         },

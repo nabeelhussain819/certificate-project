@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Core\Base;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property User $updatedBy
  * @property Student $student
  */
-class Certificate extends Model
+class Certificate extends Base
 {
     /**
      * The "type" of the auto-incrementing ID.
