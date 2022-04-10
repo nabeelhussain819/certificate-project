@@ -7,12 +7,18 @@ use App\Helpers\StringHelper;
 use App\Models\Certificate;
 use App\Models\CertificateType;
 use App\Models\Student;
+use App\Traits\InteractWithQrCode;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 class CertificateController extends Controller
 {
+    use InteractWithQrCode;
+
     /**
      * Display a listing of the resource.
      *
@@ -47,12 +53,11 @@ class CertificateController extends Controller
             $certificate = new  Certificate();
 
             $certificate->fill($record);
-
-          
+//            QrCode::format('svg')->margin(0)->size(200)->generate("asd");
             $certificate->save();
+            $qrUrl = $this->generateQR($student, $certificate);
+            
         });
-
-
     }
 
     public function getStudentCertificatePdf(Request $request, Student $student)

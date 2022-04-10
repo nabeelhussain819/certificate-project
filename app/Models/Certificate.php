@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Core\Base;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Guid\Guid;
 
 /**
  * @property integer $id
@@ -13,6 +14,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $type
  * @property string $created_at
  * @property string $updated_at
+ * @property Guid guid
+ * @property int $certificate_type_id
+ * @property string listening
+ * @property string reading
+ * @property string language_module
+ * @property string writing
  * @property User $user
  * @property User $updatedBy
  * @property Student $student
