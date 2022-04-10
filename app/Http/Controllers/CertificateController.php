@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ArrayHelper;
 use App\Helpers\StringHelper;
 use App\Models\Certificate;
+use App\Models\CertificateType;
 use App\Models\Student;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CertificateController extends Controller
 {
@@ -22,7 +25,7 @@ class CertificateController extends Controller
 
     public function getTypes()
     {
-        return Certificate::TYPE;
+        return CertificateType::get();
     }
 
     /**
@@ -35,13 +38,41 @@ class CertificateController extends Controller
         //
     }
 
+    public function generate(Request $request, Student $student)
+    {
+        return DB::transaction(function () use ($request, $student) {
+            $data = $request->all();
+
+            $record = ArrayHelper::merge($data, ["student_id" => $student->id]);
+            $certificate = new  Certificate();
+
+            $certificate->fill($record);
+
+          
+            $certificate->save();
+        });
+
+
+    }
+
     public function getStudentCertificatePdf(Request $request, Student $student)
     {
-        $data = $request->all();
-        $data['typeName'] = "A1";
-        $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));
-        $fileName = StringHelper::trimLower($student->first_name . $student->last_name) . '.pdf';
-        return $pdf->download($fileName);
+        $data1 = $request->all();
+        $data1['student_id'] = $student->id;
+
+        $record = ArrayHelper::merge($data1, ["student_id" => $student->id]);
+        $certificate = new  Student();
+        $certificate->fill([
+            ['first_name' => "asd"]
+        ]);
+
+        dd($certificate);
+        $certificate->save();
+        dd($certificate);
+
+//        $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));
+//        $fileName = StringHelper::trimLower($student->first_name . $student->last_name) . '.pdf';
+//        return $pdf->download($fileName);
     }
 
 

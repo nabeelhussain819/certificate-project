@@ -21,7 +21,7 @@ function getStudentCertificate(id, data) {
     return request({
         url: `${baseUrl}/student/${id}`,
         data,
-        method: "GET",
+        method: "POST",
     });
 }
 

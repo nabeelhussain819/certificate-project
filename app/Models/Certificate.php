@@ -29,7 +29,7 @@ class Certificate extends Base
     /**
      * @var array
      */
-    protected $fillable = ['student_id', 'guid', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
+    protected $fillable = ['student_id', 'certificate_type_id', 'listening', 'reading', 'language_module', 'writing', 'guid', 'oral', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
 
     const TYPE = [
         ['id' => 1, 'alias' => 'a1', 'name' => 'A1', 'has_language' => false],

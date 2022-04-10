@@ -9,7 +9,7 @@
             <a-form-item label="Type">
                 <a-select
                     v-decorator="[
-                        'type_id',
+                        'certificate_type_id',
                         {
                             rules: [{ required: true }],
                         },
@@ -131,11 +131,17 @@ export default {
             this.form.validateFields((err, values) => {
                 if (!err) {
                     this.loading = true;
+                    CertificateService.getStudentCertificate(
+                        this.student.id,
+                        values
+                    ).then((values) => {
+                        console.log(values);
+                    });
 
-                    for (const key in values) {
-                        url += `${key}=${values[key]}&`;
-                    }
-                    window.location = url;
+                    // for (const key in values) {
+                    //     url += `${key}=${values[key]}&`;
+                    // }
+                    // window.location = url;
                     this.success("Downloading");
                     this.$emit("closeModal", false);
                 }

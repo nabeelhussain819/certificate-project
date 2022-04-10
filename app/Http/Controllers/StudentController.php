@@ -39,6 +39,7 @@ class StudentController extends Controller
         return DB::transaction(function () use ($request) {
             $student = new Student();
             $student->fill($request->all());
+          
             $student->save();
             return $this->genericResponse(true, "student create successfully");
         });
