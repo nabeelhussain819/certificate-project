@@ -67,7 +67,6 @@ class CertificateController extends Controller
             ->with('types')
             ->orderBy('created_at', 'desc')
             ->get();
-
     }
 
 
