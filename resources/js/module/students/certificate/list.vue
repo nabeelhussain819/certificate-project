@@ -12,7 +12,7 @@
                 >
                 <a-col class="text-right" :span="12">
                     <a-button type="primary">
-                        <a-icon type="print" /> Generate New
+                        <a-icon type="printer" /> Generate New
                         Certificate</a-button
                     ></a-col
                 >
@@ -21,7 +21,7 @@
         <span slot="action" slot-scope="text, record">
             <a-tooltip>
                 <template slot="title">PDF</template>
-                <a-button v-on:click="studentView(record)" type="primary">
+                <a-button v-on:click="studentView(record)" type="danger">
                     <a-icon type="file-pdf" />
                 </a-button>
             </a-tooltip>
