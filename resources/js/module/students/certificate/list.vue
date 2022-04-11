@@ -21,15 +21,25 @@
         <span slot="action" slot-scope="text, record">
             <a-tooltip>
                 <template slot="title">PDF</template>
-                <a-button v-on:click="studentView(record)" type="danger">
-                    <a-icon type="file-pdf" />
-                </a-button>
+                <a
+                    target="_blank"
+                    :href="`storage/${record.student.guid}/pdf/${record.guid}.pdf`"
+                >
+                    <a-button type="danger">
+                        <a-icon type="file-pdf" />
+                    </a-button>
+                </a>
             </a-tooltip>
             <a-tooltip>
                 <template slot="title">QR Code </template>
-                <a-button v-on:click="studentView(record)" type="primary">
-                    <a-icon type="printer" />
-                </a-button>
+                <a
+                    target="_blank"
+                    :href="`storage/${record.student.guid}/qr/${record.guid}.svg`"
+                >
+                    <a-button v-on:click="studentView(record)" type="primary">
+                        <a-icon type="printer" />
+                    </a-button>
+                </a>
             </a-tooltip>
         </span>
     </a-table>

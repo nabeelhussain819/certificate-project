@@ -64,7 +64,7 @@ class CertificateController extends Controller
     public function studentShow(Request $request, Student $student)
     {
         return Certificate::where('student_id', $student->id)
-            ->with('types')
+            ->with(['types', 'student'])
             ->orderBy('created_at', 'desc')
             ->get();
     }

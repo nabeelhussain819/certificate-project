@@ -14,8 +14,9 @@ trait InteractWithQrCode
 
     public function generateQR(Student $student, Certificate $certificate): string
     {
-        $qr = QrCode::format('svg')->generate(url("/certificate/$certificate->guid"));
+
         $qrUrl = $this->qr_createUrl($student, $certificate);
+        $qr = QrCode::format('svg')->size(100)->generate(url("/storage/$student->guid/pdf/$certificate->guid.pdf"));
         Storage::disk('public')->put($qrUrl, $qr);
         return $qrUrl;
     }

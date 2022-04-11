@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\Base;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Guid\Guid;
 
@@ -37,6 +38,7 @@ class Certificate extends Base
      * @var array
      */
     protected $fillable = ['student_id', 'certificate_type_id', 'listening', 'reading', 'language_module', 'writing', 'guid', 'oral', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
+
 
     const TYPE = [
         ['id' => 1, 'alias' => 'a1', 'name' => 'A1', 'has_language' => false],
@@ -77,4 +79,6 @@ class Certificate extends Base
     {
         return $this->belongsTo('App\Models\CertificateType', 'certificate_type_id');
     }
+
+
 }
