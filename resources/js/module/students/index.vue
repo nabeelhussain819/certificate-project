@@ -40,6 +40,7 @@
             title="Certificates Details"
         >
             <certificate-list
+                @loadCertificate="loadCertificate"
                 @showCertificateModa="handleGenerateCertificateModal"
                 :student="student"
             />
@@ -51,7 +52,6 @@ import list from "./list";
 import create from "./create";
 import generateCertificate from "./certificate/generate";
 import certificateList from "./certificate/list";
-import CertificateService from "../../services/API/CertificateServices";
 import StudentServices from "../../services/API/StudentServices";
 export default {
     components: {
@@ -68,6 +68,7 @@ export default {
             data: [],
             loading: true,
             student: {},
+            fetchCerticates: () => {},
         };
     },
     mounted() {
@@ -75,6 +76,9 @@ export default {
     },
     methods: {
         handleGenerateCertificateModal(show) {
+            if (!show && this.showCertificatesModal) {
+                this.fetchCerticates();
+            }
             this.showGenerateCertificateModal = show;
         },
         handleCertificatesModal(show) {
@@ -99,12 +103,9 @@ export default {
             // console.log("student", student);
             this.student = student;
             this.handleCertificatesModal(true);
-            // window.location = `/certificate/student/${student.id}`;
-            // CertificateService.getStudentCertificate(student.id).then(
-            //     (response) => {
-            //         console.log(response);
-            //     }
-            // );
+        },
+        loadCertificate(fetchMethod) {
+            this.fetchCerticates = fetchMethod;
         },
     },
 };

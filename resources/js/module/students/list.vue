@@ -19,6 +19,16 @@ const studentsColumn = [
         key: "name",
     },
     {
+        title: "Date of birth",
+        dataIndex: "dob",
+        key: "dob",
+    },
+    {
+        title: "Place Of Birth",
+        dataIndex: "place_of_birth",
+        key: "place_of_birth",
+    },
+    {
         title: "Action",
         key: "action",
         scopedSlots: { customRender: "action" },

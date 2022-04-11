@@ -39,7 +39,7 @@ class Student extends Base
         'date_of_birth' => 'date',
     ];
 
-    protected $appends = ['name'];
+    protected $appends = ['name', 'dob'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -74,6 +74,13 @@ class Student extends Base
     {
         return Attribute::make(
             get: fn($value) => StringHelper::title($this->first_name . ' ' . $this->last_name)
+        );
+    }
+
+    protected function dob(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->date_of_birth->format("D d-M-Y")
         );
     }
 

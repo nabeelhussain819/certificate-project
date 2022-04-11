@@ -87,6 +87,7 @@ export default {
         };
     },
     mounted() {
+        this.$emit("loadCertificate", this.fetchStudentCertificate);
         this.fetchStudentCertificate();
     },
     methods: {
