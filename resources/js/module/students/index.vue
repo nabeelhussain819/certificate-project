@@ -81,7 +81,7 @@ export default {
                 const func = this.fetchCerticates
                 setTimeout(function () {
                    func();
-                }, 100);
+                }, 1000);
             }
             this.showGenerateCertificateModal = show;
         },
