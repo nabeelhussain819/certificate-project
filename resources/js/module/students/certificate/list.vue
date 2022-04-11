@@ -1,10 +1,21 @@
 <template>
-    <a-table :columns="studentsColumn" :dataSource="data">
+    <a-table
+        :loading="loading"
+        :pagination="false"
+        :columns="studentsColumn"
+        :dataSource="dataSource"
+    >
         <span slot="action" slot-scope="text, record">
             <a-tooltip>
-                <template slot="title">View Certificate </template>
+                <template slot="title">PDF</template>
                 <a-button v-on:click="studentView(record)" type="primary">
-                    <a-icon type="safety-certificate" />
+                    <a-icon type="file-pdf" />
+                </a-button>
+            </a-tooltip>
+            <a-tooltip>
+                <template slot="title">QR Code </template>
+                <a-button v-on:click="studentView(record)" type="primary">
+                    <a-icon type="printer" />
                 </a-button>
             </a-tooltip>
         </span>
@@ -15,14 +26,34 @@
 import CertificateServices from "../../../services/API/CertificateServices";
 const studentsColumn = [
     {
-        title: "First Name",
-        dataIndex: "first_name",
-        key: "first_name",
+        title: "Type",
+        dataIndex: "types.name",
+        key: "type",
     },
     {
-        title: "Last Name",
-        dataIndex: "last_name",
-        key: "last_name",
+        title: "Listening",
+        key: "listening",
+        dataIndex: "listening",
+    },
+    {
+        title: "Writing",
+        key: "writing",
+        dataIndex: "writing",
+    },
+    {
+        title: "Oral",
+        key: "oral",
+        dataIndex: "oral",
+    },
+    {
+        title: "Reading",
+        key: "reading",
+        dataIndex: "reading",
+    },
+    {
+        title: "Language Module",
+        key: "language_module",
+        dataIndex: "language_module",
     },
     {
         title: "Action",
@@ -37,7 +68,9 @@ export default {
     },
     data() {
         return {
+            loading: true,
             studentsColumn,
+            dataSource: [],
         };
     },
     mounted() {
@@ -48,11 +81,12 @@ export default {
             this.$emit("certificateView", record);
         },
         fetchStudentCertificate() {
-            CertificateServices.showStudentCertificate(this.student.id).then(
-                (response) => {
-                    console.log(response);
-                }
-            );
+            this.loading = true;
+            CertificateServices.showStudentCertificate(this.student.id)
+                .then((certificates) => {
+                    this.dataSource = certificates;
+                })
+                .finally(() => (this.loading = false));
         },
     },
 };

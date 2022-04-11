@@ -63,7 +63,10 @@ class CertificateController extends Controller
 
     public function studentShow(Request $request, Student $student)
     {
-        return $student->certificates()->get();
+        return Certificate::where('student_id', $student->id)
+            ->with('types')
+            ->get();
+
     }
 
 

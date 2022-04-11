@@ -69,4 +69,12 @@ class Certificate extends Base
     {
         return $this->belongsTo('App\Models\Student');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function types()
+    {
+        return $this->belongsTo('App\Models\CertificateType', 'certificate_type_id');
+    }
 }
