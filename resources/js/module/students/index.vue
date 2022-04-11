@@ -37,7 +37,7 @@
             :width="1200"
             :visible="showCertificatesModal"
             @cancel="handleCertificatesModal(false)"
-            title="Certificates"
+            title="Certificates Details"
         >
             <certificate-list :student="student" />
         </a-modal>

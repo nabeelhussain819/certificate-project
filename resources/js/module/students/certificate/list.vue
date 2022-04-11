@@ -6,7 +6,17 @@
         :dataSource="dataSource"
     >
         <span slot="title">
-            <h3>{{ this.student.name }}</h3>
+            <a-row>
+                <a-col :span="12">
+                    <h3>{{ this.student.name }}</h3></a-col
+                >
+                <a-col class="text-right" :span="12">
+                    <a-button type="primary">
+                        <a-icon type="print" /> Generate New
+                        Certificate</a-button
+                    ></a-col
+                >
+            </a-row>
         </span>
         <span slot="action" slot-scope="text, record">
             <a-tooltip>

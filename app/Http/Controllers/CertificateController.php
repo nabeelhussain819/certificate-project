@@ -65,6 +65,7 @@ class CertificateController extends Controller
     {
         return Certificate::where('student_id', $student->id)
             ->with('types')
+            ->orderBy("desc")
             ->get();
 
     }
