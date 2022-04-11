@@ -28,6 +28,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
+
+    Route::get('/certificate/student-detail/{student}', [CertificateController::class, 'studentShow']);
     Route::post('/certificate/student/{student}', [CertificateController::class, 'generate']);
     Route::get('/certificate/get-types/', [CertificateController::class, 'getTypes']);
 //

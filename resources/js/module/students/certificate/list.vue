@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import CertificateServices from "../../../services/API/CertificateServices";
 const studentsColumn = [
     {
         title: "First Name",
@@ -39,9 +40,19 @@ export default {
             studentsColumn,
         };
     },
+    mounted() {
+        this.fetchStudentCertificate();
+    },
     methods: {
         studentView(record) {
             this.$emit("certificateView", record);
+        },
+        fetchStudentCertificate() {
+            CertificateServices.showStudentCertificate(this.student.id).then(
+                (response) => {
+                    console.log(response);
+                }
+            );
         },
     },
 };

@@ -17,6 +17,13 @@ function getTypes(params = {}) {
     });
 }
 
+function showStudentCertificate(id) {
+    return request({
+        url: `${baseUrl}/student-detail/${id}`,
+    });
+}
+
+//generate @todo rename
 function getStudentCertificate(id, data) {
     return request({
         url: `${baseUrl}/student/${id}`,
@@ -38,6 +45,7 @@ const CertificateService = {
     getStudentCertificate,
     update,
     getTypes,
+    showStudentCertificate,
 };
 
 export default CertificateService;

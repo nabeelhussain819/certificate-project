@@ -61,24 +61,9 @@ class CertificateController extends Controller
         });
     }
 
-    public function getStudentCertificatePdf(Request $request, Student $student)
+    public function studentShow(Request $request, Student $student)
     {
-        $data1 = $request->all();
-        $data1['student_id'] = $student->id;
-
-        $record = ArrayHelper::merge($data1, ["student_id" => $student->id]);
-        $certificate = new  Student();
-        $certificate->fill([
-            ['first_name' => "asd"]
-        ]);
-
-        dd($certificate);
-        $certificate->save();
-        dd($certificate);
-
-//        $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));
-//        $fileName = StringHelper::trimLower($student->first_name . $student->last_name) . '.pdf';
-//        return $pdf->download($fileName);
+        return $student->certificates()->get();
     }
 
 
