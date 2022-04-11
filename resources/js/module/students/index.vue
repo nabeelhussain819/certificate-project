@@ -8,7 +8,7 @@
                     type="primary"
                     >Add Student</a-button
                 >
-                <list :data="data" @print="getCertificate" />
+                <list :data="data" @certificateView="getCertificate" />
             </a-card>
         </a-spin>
         <a-modal
@@ -32,12 +32,21 @@
                 @closeModal="handleGenerateCertificateModal"
             />
         </a-modal>
+        <a-modal
+            :width="1200"
+            :visible="showCertificatesModal"
+            @cancel="handleCertificatesModal(false)"
+            title="Certificates"
+        >
+            <certificate-list :student="student" />
+        </a-modal>
     </div>
 </template>
 <script>
 import list from "./list";
 import create from "./create";
 import generateCertificate from "./certificate/generate";
+import certificateList from "./certificate/list";
 import CertificateService from "../../services/API/CertificateServices";
 import StudentServices from "../../services/API/StudentServices";
 export default {
@@ -45,11 +54,13 @@ export default {
         list,
         create,
         generateCertificate,
+        certificateList,
     },
     data() {
         return {
             showModalCreate: false,
             showGenerateCertificateModal: false,
+            showCertificatesModal: false,
             data: [],
             loading: true,
             student: {},
@@ -61,6 +72,9 @@ export default {
     methods: {
         handleGenerateCertificateModal(show) {
             this.showGenerateCertificateModal = show;
+        },
+        handleCertificatesModal(show) {
+            this.showCertificatesModal = show;
         },
         handleCreateModal(show) {
             this.showModalCreate = show;
@@ -80,7 +94,7 @@ export default {
         getCertificate(student) {
             // console.log("student", student);
             this.student = student;
-            this.handleGenerateCertificateModal(true);
+            this.handleCertificatesModal(true);
             // window.location = `/certificate/student/${student.id}`;
             // CertificateService.getStudentCertificate(student.id).then(
             //     (response) => {

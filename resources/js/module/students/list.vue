@@ -2,9 +2,9 @@
     <a-table :columns="studentsColumn" :dataSource="data">
         <span slot="action" slot-scope="text, record">
             <a-tooltip>
-                <template slot="title">Print Certificate </template>
-                <a-button v-on:click="studentView(record)" type="link">
-                    <a-icon type="printer" />
+                <template slot="title">View Certificate </template>
+                <a-button v-on:click="studentView(record)" type="primary">
+                    <a-icon type="safety-certificate" />
                 </a-button>
             </a-tooltip>
         </span>
@@ -40,7 +40,7 @@ export default {
     },
     methods: {
         studentView(record) {
-            this.$emit("print",record);
+            this.$emit("certificateView", record);
         },
     },
 };
