@@ -7,6 +7,7 @@ use App\Helpers\StringHelper;
 use App\Models\Certificate;
 use App\Models\CertificateType;
 use App\Models\Student;
+use App\Traits\InteractWithPdf;
 use App\Traits\InteractWithQrCode;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class CertificateController extends Controller
 {
-    use InteractWithQrCode;
+    use InteractWithQrCode, InteractWithPdf;
 
     /**
      * Display a listing of the resource.
@@ -47,11 +48,8 @@ class CertificateController extends Controller
     public function generate(Request $request, Student $student)
     {
         return DB::transaction(function () use ($request, $student) {
-            $data = $request->all();
-            $data['typeName'] = "asd";
 
-
-            $record = ArrayHelper::merge($data, ["student_id" => $student->id]);
+            $record = ArrayHelper::merge($request->all(), ["student_id" => $student->id]);
             $certificate = new  Certificate();
 
             $certificate->fill($record);
@@ -59,12 +57,7 @@ class CertificateController extends Controller
             $certificate->save();
             $qrUrl = $this->generateQR($student, $certificate);
 
-
-            $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
-            $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));
-            $content = $pdf->download()->getOriginalContent();
-            Storage::disk('public')->put($fileName, $content);
-            Pdf::loadFile('pdf.certificate')->save($fileName)->stream('download.pdf');
+            $this->generatePdf($student, $certificate, $request);
         });
     }
 
