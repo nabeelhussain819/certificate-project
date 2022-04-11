@@ -39,7 +39,10 @@
             @cancel="handleCertificatesModal(false)"
             title="Certificates Details"
         >
-            <certificate-list :student="student" />
+            <certificate-list
+                @showCertificateModa="handleGenerateCertificateModal"
+                :student="student"
+            />
         </a-modal>
     </div>
 </template>

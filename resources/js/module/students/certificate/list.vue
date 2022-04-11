@@ -11,7 +11,7 @@
                     <h3>{{ this.student.name }}</h3></a-col
                 >
                 <a-col class="text-right" :span="12">
-                    <a-button type="primary">
+                    <a-button @click="showCertificateModa" type="primary">
                         <a-icon type="printer" /> Generate New
                         Certificate</a-button
                     ></a-col
@@ -100,6 +100,9 @@ export default {
                     this.dataSource = certificates;
                 })
                 .finally(() => (this.loading = false));
+        },
+        showCertificateModa() {
+            this.$emit("showCertificateModa", true);
         },
     },
 };
