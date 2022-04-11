@@ -5,6 +5,9 @@
         :columns="studentsColumn"
         :dataSource="dataSource"
     >
+        <span slot="title">
+            <h3>{{ this.student.name }}</h3>
+        </span>
         <span slot="action" slot-scope="text, record">
             <a-tooltip>
                 <template slot="title">PDF</template>

@@ -33,6 +33,7 @@
             />
         </a-modal>
         <a-modal
+            :destroyOnClose="true"
             :width="1200"
             :visible="showCertificatesModal"
             @cancel="handleCertificatesModal(false)"

@@ -14,14 +14,9 @@
 <script>
 const studentsColumn = [
     {
-        title: "First Name",
-        dataIndex: "first_name",
-        key: "first_name",
-    },
-    {
-        title: "Last Name",
-        dataIndex: "last_name",
-        key: "last_name",
+        title: "Name",
+        dataIndex: "name",
+        key: "name",
     },
     {
         title: "Action",

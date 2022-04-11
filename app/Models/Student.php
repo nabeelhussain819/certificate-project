@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Core\Base;
+use App\Helpers\StringHelper;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -37,6 +39,8 @@ class Student extends Base
         'date_of_birth' => 'date',
     ];
 
+    protected $appends = ['name'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -60,4 +64,17 @@ class Student extends Base
     {
         return $this->belongsTo('App\Models\User', 'updated_by');
     }
+
+    public function getNameAttribute()
+    {
+
+    }
+
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => StringHelper::title($this->first_name . ' ' . $this->last_name)
+        );
+    }
+
 }
