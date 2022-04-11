@@ -77,7 +77,11 @@ export default {
     methods: {
         handleGenerateCertificateModal(show) {
             if (!show && this.showCertificatesModal) {
-                this.fetchCerticates();
+                // bit jugard
+                const func = this.fetchCerticates
+                setTimeout(function () {
+                   func();
+                }, 100);
             }
             this.showGenerateCertificateModal = show;
         },

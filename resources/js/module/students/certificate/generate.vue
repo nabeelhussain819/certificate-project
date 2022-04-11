@@ -135,7 +135,7 @@ export default {
                         this.student.id,
                         values
                     ).then((values) => {
-                        console.log(values);
+                        // console.log(values);
                     });
 
                     // for (const key in values) {
@@ -152,7 +152,6 @@ export default {
         onTypeSelect(type, record) {
             this.hasLanguageModule =
                 record.data.attrs["data-hasLanguageModule"];
-            console.log(type, record.data.attrs["data-hasLanguageModule"]);
         },
     },
 };
