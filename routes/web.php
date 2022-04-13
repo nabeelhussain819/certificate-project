@@ -19,12 +19,16 @@ use  App\Http\Controllers\CertificateController;
 Route::get('/get-pdf', [PdfController::class, 'getPDF']);
 Route::get('/pdf-view', [PdfController::class, 'pdfView']);
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
- 
+
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/certificate/student-detail/{student}', [CertificateController::class, 'studentShow']);
     Route::post('/certificate/student/{student}', [CertificateController::class, 'generate']);
