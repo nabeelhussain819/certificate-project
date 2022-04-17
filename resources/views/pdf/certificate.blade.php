@@ -29,20 +29,50 @@
             font-weight: bold;
         }
 
+        body {
+            background-image: url('{{public_path('/images/pdf/water-mark.png')}}');
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-attachment: fixed;
+        }
+
+        .border {
+            /*border: 1px solid red;*/
+        }
+
+        .input-bg {
+            background-color: #eaf1f7;
+            border-bottom: 1px solid black;
+            padding: 5px 15px
+        }
+
+        .second-page h3 {
+            font-size: 12px;
+        }
+
+        .second-page p {
+            font-size: 11px;
+        }
+
+        .second-page h5 {
+            font-size: 11px;
+        }
     </style>
+
 </head>
 
 <body>
 <!-- Section One -->
 <div class="clearfix">
     <div style="float:left; width:600px ; overflow: auto;"><img
-            src="{{ public_path('/images/pdf/main-heading.jpeg') }}" style="display:block;max-width: 550px"
+            width="120px"
+            src="{{ public_path('/images/pdf/doted-menu.png') }}" style="display:block;max-width: 550px"
             alt="logo1"/>
     </div>
 
     <div>
         <div style="float:right; width:150px;  overflow: auto;"><img
-                src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 400px"
+                src="{{ public_path('/images/pdf/star-german.png') }}" style="display:block;max-width: 400px"
                 alt="logo1"/>
         </div>
 
@@ -54,41 +84,53 @@
 <div class="clearfix" style="text-align: center;margin-top: -20px;">
 
     <h3 style="
-            margin-top:35px;
-            font-size: 50px;
-            text-align: center;">
+            margin-top:-105px;
+            font-size: 75px;
+            line-height: 1;
+            text-align: center;" class="border">
+        <span
+            style="font-weight: bold;line-height: 1; display:inline-block;text-align: center;width: 100%; font-size: 35px;">Worldwide Bildungswerk</span>
+        <br>
         Zertifikat
     </h3>
     <h5 style="
          margin:0;
+          margin-top:-30px;
          font-size: 30px;
           ">
         {{  $data['typeName']}}
         {{--        Deutsch A1--}}
     </h5>
-    <h5 style="font-size: 30px;  margin:0;">Anfanger</h5>
+    <h5 style="font-size: 30px; margin-top:-30px;  margin:0;">Anfanger</h5>
 </div>
 
 
 <div style="margin-top: 20px;text-align: center">
-    <table class="detail-table" style="text-align:center;width: 600px;margin:auto">
+    <table class="detail-table" style="width: 450px;margin:auto">
         <tr>
             <td>
-                {{ $student->first_name }}
-                <br/>
+                <div
+                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">{{ $student->first_name }}</div>
+
                 <strong>Name</strong>
             </td>
-            <td> {{ $student->last_name }} <br/>
+            <td>
+                <div
+                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">{{ $student->last_name }}</div>
                 <strong>Geburtsdatum</strong>
             </td>
         </tr>
         <tr>
             <td>
-                {{ $student->date_of_birth }}
-                <br/>
+                <div
+                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">   {{ $student->date_of_birth }}</div>
+
+
                 <strong>Vorname</strong>
             </td>
-            <td>{{ $student->place_of_birth }} <br/>
+            <td>
+                <div
+                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">{{ $student->place_of_birth }}</div>
                 <strong>Geburtsort</strong>
             </td>
         </tr>
@@ -96,18 +138,18 @@
 </div>
 
 <div style="margin-top: 20px;text-align: center">
-    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+    <table class="score-table " style="width: 400px;margin:auto">
         <tr>
-            <td> Geburtsort</td>
-            <td><u>{{$data['listening']}} </u> / 15 Punkte</td>
+            <td> Leseverstehen</td>
+            <td><span class="input-bg">{{$data['listening']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
-            <td> Geburtsort</td>
-            <td><u>{{$data['reading']}} </u> / 15 Punkte</td>
+            <td> Hörverstehen</td>
+            <td><span class="input-bg">{{$data['reading']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
-            <td> Geburtsort</td>
-            <td><u>{{$data['writing']}} </u> / 15 Punkte</td>
+            <td> Schriftlicher Ausdruck</td>
+            <td><span class="input-bg">{{$data['writing']}}</span> / 15 Punkte</td>
         </tr>
         @if(isset($data['language_module']))
             <tr>
@@ -116,8 +158,22 @@
             </tr>
         @endif
         <tr>
-            <td> Geburtsort</td>
-            <td><u>{{$data['oral']}} </u> / 15 Punkte</td>
+            <td> Mündlicher Ausdruck</td>
+            <td><span class="input-bg">{{$data['oral']}} </span> / 15 Punkte</td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 20px;text-align: center">
+    <table class="score-table " style="width: 400px;margin:auto">
+
+        <tr>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Gesamtpunkte</td>
+            <td><span class="input-bg"></span> / 60 Punkte</td>
+        </tr>
+        <tr>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Prädikat</td>
+            <td><span class="input-bg"></span> / 15 Punkte</td>
         </tr>
     </table>
 </div>
@@ -126,39 +182,40 @@
     <table class="score-table " style="text-align:center;width: 650px;margin:auto">
 
         <tr>
-            <td>&#10003; Geburtsort</td>
-            <td><u> </u> / 60 Punkte</td>
-        </tr>
-        <tr>
-            <td>&#10003; Geburtsort</td>
-            <td><u>20 </u> / 15 Punkte</td>
-        </tr>
-    </table>
-</div>
-
-<div style="margin-top: 20px;text-align: center">
-    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
-
-        <tr>
-            <td>Datum der Prüfung</td>
-            <td><u> </u> Ausweisnummer</td>
-            <td><u> </u> Ausstellungsdatum</td>
+            <td>
+                <div style="padding: 15px">
+                    <div class="input-bg"></div>
+                    Datum der Prüfung
+                </div>
+            </td>
+            <td>
+                <div style="padding: 15px">
+                    <div class="input-bg"></div>
+                    Ausweisnummer
+                </div>
+            </td>
+            <td>
+                <div style="padding: 15px">
+                    <div class="input-bg"></div>
+                    Ausstellungsdatum
+                </div>
+            </td>
         </tr>
 
     </table>
 </div>
 <!-- column 5 -->
-<div style="padding: 0%">
-    <h3 style="text-align: right">Geschaftsuhrer</h3>
-    <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="display:block;max-width: 100px"
-         alt="flag"/>
+<div class="border" style="padding: 0; margin-top:150px;">
+    <h3 style="text-align: right ;width: 300px;float:right">Geschaftsuhrer</h3>
+    {{--    <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="max-width: 100px;float:left"--}}
+    {{--         alt="flag"/>--}}
 </div>
-<br/>
+
 <div style="page-break-before:always">&nbsp;</div>
 <!-- Section two -->
-<div style="padding: 0px; font-family: sans-serif;max-height: 75%;">
+<div class="second-page" style="padding: 0px; font-family: sans-serif;max-height: 75%;">
     <div>
-        <h3 style="text-align: center">An die zuständigen Behörden</h3>
+        <h3 style="text-align: center;padding:5px;margin: 5px">An die zuständigen Behörden</h3>
         <p style="text-align: justify; font-size: 11px">
             Mit diesem Zertifikat wird bestätigt, dass der genannte Teilnehmer
             dieses Sprachkurses, die entsprechende Prüfung ordnungsgemäß abgelegt
@@ -184,35 +241,35 @@
     </div>
     <!-- column 1 -->
     <div>
-        <h3 style="text-align: center">A: Elementare Sprachverwendung</h3>
+        <h3 style="text-align: center;padding:5px;margin: 5px">A: Elementare Sprachverwendung</h3>
         <table>
             <tr>
                 <td>
-                    <h5 style="text-align: center; margin-bottom: 0px">A1: Anfänger</h5>
-                    <p style="font-size: 11px">
-                        Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
-                        verstehen und verwenden, die auf die Befriedigung konkreter
-                        Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
-                        Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
-                        für Leute sie kennen oder was für Dinge sie haben – und kann auf
-                        Fragen dieser Art Antwort geben. Kann sich auf einfache Art
-                        verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
-                        langsam und deutlich sprechen und bereit sind zu helfen.
+                    <h5 style="text-align: center;>A1: Anfänger</h5>
+                    <p style=" font-size: 11px">
+                    Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
+                    verstehen und verwenden, die auf die Befriedigung konkreter
+                    Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
+                    Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
+                    für Leute sie kennen oder was für Dinge sie haben – und kann auf
+                    Fragen dieser Art Antwort geben. Kann sich auf einfache Art
+                    verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
+                    langsam und deutlich sprechen und bereit sind zu helfen.
                     </p>
                 </td>
                 <td>
-                    <h5 style="text-align: center; margin-bottom: 0px">
+                    <h5 style="text-align: center; >
                         A2: An Die zustandigen Behorden
                     </h5>
-                    <p style="font-size: 11px">
-                        Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
-                        verstehen und verwenden, die auf die Befriedigung konkreter
-                        Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
-                        Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
-                        für Leute sie kennen oder was für Dinge sie haben – und kann auf
-                        Fragen dieser Art Antwort geben. Kann sich auf einfache Art
-                        verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
-                        langsam und deutlich sprechen und bereit sind zu helfen.
+                    <p style=" font-size: 11px">
+                    Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
+                    verstehen und verwenden, die auf die Befriedigung konkreter
+                    Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
+                    Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
+                    für Leute sie kennen oder was für Dinge sie haben – und kann auf
+                    Fragen dieser Art Antwort geben. Kann sich auf einfache Art
+                    verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
+                    langsam und deutlich sprechen und bereit sind zu helfen.
                     </p>
                 </td>
             </tr>
@@ -250,14 +307,14 @@
     </div>
     <!-- column 2 -->
     <div>
-        <h3 style="text-align: center">B: Selbstständige Sprachverwendung</h3>
+        <h3 style="text-align: center;padding:5px;margin: 5px;">B: Selbstständige Sprachverwendung</h3>
         <table>
             <tr>
                 <td>
-                    <h5 style="text-align: center; margin-bottom: 0px">
+                    <h5 style="text-align: center; padding:5px;margin: 5px;">
                         B1: Fortgeschrittene Sprachverwendung
                     </h5>
-                    <p style="font-size: 11px">
+                    <p>
                         Kann die Hauptpunkte verstehen, wenn klare Standardsprache
                         verwendet wird und wenn es um vertraute Dinge aus Arbeit, Schule,
                         Freizeit usw. geht. Kann die meisten Situationen bewältigen, denen
@@ -269,10 +326,10 @@
                     </p>
                 </td>
                 <td>
-                    <h5 style="text-align: center; margin-bottom: 0px">
+                    <h5>
                         B2: Selbständige Sprachverwendung
                     </h5>
-                    <p style="font-size: 11px">
+                    <p>
                         Kann die Hauptinhalte komplexer Texte zu konkreten und abstrakten
                         Themen verstehen; versteht im eigenen Spezialgebiet auch
                         Fachdiskussionen. Kann sich so spontan und fließend verständigen,
@@ -320,11 +377,11 @@
     </div>
     <!-- column 3 -->
     <div>
-        <h3 style="text-align: center;">C: Kompetente Sprachverwendung</h3>
+        <h3 style=" text-align: center;padding:5px;margin: 5px;">C: Kompetente Sprachverwendung</h3>
         <table>
             <tr>
                 <td>
-                    <h5 style="text-align: center; margin-bottom: 0px">
+                    <h5 style="text-align: center; padding:5px;margin: 5px;">
                         C1: Fachkundige Sprachkenntnisse
                     </h5>
                     <p style="font-size: 11px">
@@ -340,10 +397,10 @@
                     </p>
                 </td>
                 <td>
-                    <h5 style="text-align: center; margin-bottom: 0px">
+                    <h5 style="text-align: center;padding:5px;margin: 5px;">
                         C2: Annähernd muttersprachliche Kenntnisse
                     </h5>
-                    <p style="font-size: 11px">
+                    <p style="font-size: 11px;padding:5px;margin: 5px;">
                         Kann praktisch alles, was er/sie liest oder hört, mühelos
                         verstehen. Kann Informationen aus verschiedenen schriftlichen und
                         mündlichen Quellen zusammenfassen und dabei Begründungen und
@@ -388,30 +445,48 @@
          </div>
      </div> --}}
     </div>
+
+    <div style="text-align: center">
+        <div style="font-size: 11px;">
+            <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
+            <ul style="">
+                <li>sehr gut (1): (60 – 54 der Gesamtpunkte)</li>
+                <li>gut (2): (53 – 48 der Gesamtpunkte)</li>
+                <li>befriedigend (3): (47 – 42 der Gesamtpunkte)</li>
+                <li>ausreichend (4): (41 – 36 der Gesamtpunkte)</li>
+                <li>ungenügend (5): (0 – 35 der Gesamtpunkte)</li>
+            </ul>
+        </div>
+    </div>
     <!-- column 4 -->
     <table style="min-width:100%;">
         <tr>
             <td>
                 <img
-                    src="{{ public_path('/images/pdf/main-logo2.JPG') }}" style="display:block;max-width: 105px"
+                    src="{{ public_path('/images/pdf/textlogo.png') }}" style="display:block;max-width: 105px"
+                    alt="logo-2"/>
+                <img
+                    src="{{ public_path('/images/pdf/footer-tet-logo.png') }}" style="display:block;max-width: 105px"
                     alt="logo-2"/>
             </td>
             <td>
-                <div style="font-size: 11px;">
-                    <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
-                    <ul>
-                        <li>sehr gut (1): (60 – 54 der Gesamtpunkte)</li>
-                        <li>gut (2): (53 – 48 der Gesamtpunkte)</li>
-                        <li>befriedigend (3): (47 – 42 der Gesamtpunkte)</li>
-                        <li>ausreichend (4): (41 – 36 der Gesamtpunkte)</li>
-                        <li>ungenügend (5): (0 – 35 der Gesamtpunkte)</li>
-                    </ul>
-                </div>
+                {{--                <div style="font-size: 11px;">--}}
+                {{--                    <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>--}}
+                {{--                    <ul>--}}
+                {{--                        <li>sehr gut (1): (60 – 54 der Gesamtpunkte)</li>--}}
+                {{--                        <li>gut (2): (53 – 48 der Gesamtpunkte)</li>--}}
+                {{--                        <li>befriedigend (3): (47 – 42 der Gesamtpunkte)</li>--}}
+                {{--                        <li>ausreichend (4): (41 – 36 der Gesamtpunkte)</li>--}}
+                {{--                        <li>ungenügend (5): (0 – 35 der Gesamtpunkte)</li>--}}
+                {{--                    </ul>--}}
+                {{--                </div>--}}
             </td>
             <td>
-                <img
-                    src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 120px"
-                    alt="logo2"/>
+                <div style="text-align: right">
+                    <img
+                        src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 120px"
+                        alt="logo2"/>
+                </div>
 
             </td>
         </tr>
