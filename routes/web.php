@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/certificate/student-detail/{student}', [CertificateController::class, 'studentShow']);
+    Route::get('/certificate/test', [CertificateController::class, 'getStudentCertificatePdf']);
+
     Route::post('/certificate/student/{student}', [CertificateController::class, 'generate']);
     Route::get('/certificate/get-types/', [CertificateController::class, 'getTypes']);
 //

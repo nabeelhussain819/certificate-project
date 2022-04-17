@@ -61,6 +61,13 @@ class CertificateController extends Controller
         });
     }
 
+    public function getStudentCertificatePdf(Request $request)
+    {
+        $pdf = PDF::loadView('pdf.certificate2');
+        return $pdf->download('invoice.pdf');
+
+    }
+
     public function studentShow(Request $request, Student $student)
     {
         return Certificate::where('student_id', $student->id)
