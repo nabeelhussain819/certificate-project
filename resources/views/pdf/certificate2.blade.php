@@ -37,9 +37,16 @@
         }
 
         .border {
-            1px solid red;
+            /*border: 1px solid red;*/
+        }
+
+        .input-bg {
+            background-color: #eaf1f7;
+            border-bottom: 1px solid black;
+            padding: 5px 15px
         }
     </style>
+
 </head>
 
 <body>
@@ -66,9 +73,11 @@
 
     <h3 style="
             margin-top:-105px;
-            font-size: 50px;
+            font-size: 75px;
+            line-height: 1;
             text-align: center;" class="border">
-        <span style="font-weight: bold; display:inline-block;text-align: center;width: 100%; font-size: 35px;">Worldwide Bildungswerk</span>
+        <span
+            style="font-weight: bold;line-height: 1; display:inline-block;text-align: center;width: 100%; font-size: 35px;">Worldwide Bildungswerk</span>
         <br>
         Zertifikat
     </h3>
@@ -85,24 +94,27 @@
 
 
 <div style="margin-top: 20px;text-align: center">
-    <table class="detail-table" style="text-align:center;width: 600px;margin:auto">
+    <table class="detail-table" style="width: 450px;margin:auto">
         <tr>
             <td>
-                Naveed
-                <br/>
+                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">Naveed</div>
+
                 <strong>Name</strong>
             </td>
-            <td>Nasib <br/>
+            <td>
+                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">Nasib</div>
                 <strong>Geburtsdatum</strong>
             </td>
         </tr>
         <tr>
             <td>
-                12-jan-2012
-                <br/>
+                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">12-jan-2012</div>
+
+
                 <strong>Vorname</strong>
             </td>
-            <td>Karachi <br/>
+            <td>
+                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">Karachi</div>
                 <strong>Geburtsort</strong>
             </td>
         </tr>
@@ -110,29 +122,29 @@
 </div>
 
 <div style="margin-top: 20px;text-align: center">
-    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+    <table class="score-table " style="width: 400px;margin:auto">
         <tr>
             <td> Leseverstehen</td>
-            <td><u>2</u> / 15 Punkte</td>
+            <td><span class="input-bg">2</span> / 15 Punkte</td>
         </tr>
         <tr>
             <td> Hörverstehen</td>
-            <td><u>2 </u> / 15 Punkte</td>
+            <td><span class="input-bg">2</span> / 15 Punkte</td>
         </tr>
         <tr>
             <td> Schriftlicher Ausdruck</td>
-            <td><u>2</u> / 15 Punkte</td>
+            <td><span class="input-bg">2</span> / 15 Punkte</td>
         </tr>
 
         <tr>
             <td> Mündlicher Ausdruck</td>
-            <td><u>2 </u> / 15 Punkte</td>
+            <td><span class="input-bg">2</span> / 15 Punkte</td>
         </tr>
     </table>
 </div>
 
 <div style="margin-top: 20px;text-align: center">
-    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+    <table class="score-table " style="width: 450px;margin:auto">
 
         <tr>
             <td>&#10003; Gesamtpunkte</td>
@@ -149,20 +161,35 @@
     <table class="score-table " style="text-align:center;width: 650px;margin:auto">
 
         <tr>
-            <td>Datum der Prüfung</td>
-            <td> Ausweisnummer</td>
-            <td>Ausstellungsdatum</td>
+            <td>
+                <div style="padding: 15px">
+                    <div class="input-bg">2</div>
+                    Datum der Prüfung
+                </div>
+            </td>
+            <td>
+                <div style="padding: 15px">
+                    <div class="input-bg">2</div>
+                    Ausweisnummer
+                </div>
+            </td>
+            <td>
+                <div style="padding: 15px">
+                    <div class="input-bg">2</div>
+                    Ausstellungsdatum
+                </div>
+            </td>
         </tr>
 
     </table>
 </div>
 <!-- column 5 -->
-<div style="padding: 0%">
-    <h3 style="text-align: right">Geschaftsuhrer</h3>
-    <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="display:block;max-width: 100px"
+<div class="border" style="padding: 0; margin-top:150px;">
+    <h3 style="text-align: right ;width: 300px;float:right">Geschaftsuhrer</h3>
+    <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="max-width: 100px;float:left"
          alt="flag"/>
 </div>
-<br/>
+
 <div style="page-break-before:always">&nbsp;</div>
 <!-- Section two -->
 <div style="padding: 0px; font-family: sans-serif;max-height: 75%;">
