@@ -29,6 +29,16 @@
             font-weight: bold;
         }
 
+        body {
+            background-image: url('{{public_path('/images/pdf/water-mark.png')}}');
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-attachment: fixed;
+        }
+
+        .border {
+            1px solid red;
+        }
     </style>
 </head>
 
@@ -36,13 +46,14 @@
 <!-- Section One -->
 <div class="clearfix">
     <div style="float:left; width:600px ; overflow: auto;"><img
-            src="{{ public_path('/images/pdf/main-heading.jpeg') }}" style="display:block;max-width: 550px"
+            width="120px"
+            src="{{ public_path('/images/pdf/doted-menu.png') }}" style="display:block;max-width: 550px"
             alt="logo1"/>
     </div>
 
     <div>
         <div style="float:right; width:150px;  overflow: auto;"><img
-                src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 400px"
+                src="{{ public_path('/images/pdf/star-german.png') }}" style="display:block;max-width: 400px"
                 alt="logo1"/>
         </div>
 
@@ -54,19 +65,22 @@
 <div class="clearfix" style="text-align: center;margin-top: -20px;">
 
     <h3 style="
-            margin-top:35px;
+            margin-top:-105px;
             font-size: 50px;
-            text-align: center;">
+            text-align: center;" class="border">
+        <span style="font-weight: bold; display:inline-block;text-align: center;width: 100%; font-size: 35px;">Worldwide Bildungswerk</span>
+        <br>
         Zertifikat
     </h3>
     <h5 style="
          margin:0;
+          margin-top:-30px;
          font-size: 30px;
           ">
         Certificate nanem
         {{--        Deutsch A1--}}
     </h5>
-    <h5 style="font-size: 30px;  margin:0;">Anfanger</h5>
+    <h5 style="font-size: 30px; margin-top:-30px;  margin:0;">Anfanger</h5>
 </div>
 
 
@@ -98,20 +112,20 @@
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="text-align:center;width: 650px;margin:auto">
         <tr>
-            <td> Geburtsort</td>
+            <td> Leseverstehen</td>
             <td><u>2</u> / 15 Punkte</td>
         </tr>
         <tr>
-            <td> Geburtsort</td>
+            <td> Hörverstehen</td>
             <td><u>2 </u> / 15 Punkte</td>
         </tr>
         <tr>
-            <td> Geburtsort</td>
+            <td> Schriftlicher Ausdruck</td>
             <td><u>2</u> / 15 Punkte</td>
         </tr>
 
         <tr>
-            <td> Geburtsort</td>
+            <td> Mündlicher Ausdruck</td>
             <td><u>2 </u> / 15 Punkte</td>
         </tr>
     </table>
@@ -121,11 +135,11 @@
     <table class="score-table " style="text-align:center;width: 650px;margin:auto">
 
         <tr>
-            <td>&#10003; Geburtsort</td>
+            <td>&#10003; Gesamtpunkte</td>
             <td><u> </u> / 60 Punkte</td>
         </tr>
         <tr>
-            <td>&#10003; Geburtsort</td>
+            <td>&#10003; Prädikat</td>
             <td><u>20 </u> / 15 Punkte</td>
         </tr>
     </table>
@@ -136,8 +150,8 @@
 
         <tr>
             <td>Datum der Prüfung</td>
-            <td><u> </u> Ausweisnummer</td>
-            <td><u> </u> Ausstellungsdatum</td>
+            <td> Ausweisnummer</td>
+            <td>Ausstellungsdatum</td>
         </tr>
 
     </table>
