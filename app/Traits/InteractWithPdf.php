@@ -17,8 +17,9 @@ trait InteractWithPdf
     public function generatePdf(Student $student, Certificate $certificate, array $data)
     {
         $certificate = $certificate->load('types');
-      
+
         $data['typeName'] = $certificate->types->name;
+        $data['qrUrl'] = "/storage/$student->guid/qr/$certificate->guid." . Certificate::QR_FORMAT;
 
         $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
         $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));

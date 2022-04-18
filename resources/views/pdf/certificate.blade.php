@@ -138,25 +138,25 @@
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="width: 400px;margin:auto">
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Leseverstehen</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Leseverstehen</td>
             <td><span class="input-bg">{{$data['listening']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Hörverstehen</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Hörverstehen</td>
             <td><span class="input-bg">{{$data['reading']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Schriftlicher Ausdruck</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Schriftlicher Ausdruck</td>
             <td><span class="input-bg">{{$data['writing']}}</span> / 15 Punkte</td>
         </tr>
         @if(isset($data['language_module']))
             <tr>
-                <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Geburtsort</td>
+                <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Geburtsort</td>
                 <td><u>{{$data['language_module']}} </u> / 15 Punkte</td>
             </tr>
         @endif
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Mündlicher Ausdruck</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Mündlicher Ausdruck</td>
             <td><span class="input-bg">{{$data['oral']}} </span> / 15 Punkte</td>
         </tr>
     </table>
@@ -203,10 +203,14 @@
     </table>
 </div>
 <!-- column 5 -->
-<div class="border" style="padding: 0; margin-top:150px;">
-    <h3 style="text-align: right ;width: 300px;float:right">Geschaftsuhrer</h3>
-    {{--    <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="max-width: 100px;float:left"--}}
-    {{--         alt="flag"/>--}}
+<div class="border" style="padding: 0; margin-top:130px;">
+    <h3 style="text-align: right ;width: 300px;float:right;margin-top:30px;">Geschaftsuhrer</h3>
+
+    {{--    <img src="{{$data['qrUrl'] }}" style="max-width: 100px;float:left"/>--}}
+    <img
+        src="{{public_path() . $data['qrUrl'] }}"
+        style="max-width: 100px;float:left"/>
+
 </div>
 
 <div style="page-break-before:always">&nbsp;</div>

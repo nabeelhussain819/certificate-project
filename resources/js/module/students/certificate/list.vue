@@ -34,7 +34,7 @@
                 <template slot="title">QR Code </template>
                 <a
                     target="_blank"
-                    :href="`storage/${record.student.guid}/qr/${record.guid}.svg`"
+                    :href="`storage/${record.student.guid}/qr/${record.guid}.png`"
                 >
                     <a-button v-on:click="studentView(record)" type="primary">
                         <a-icon type="printer" />
