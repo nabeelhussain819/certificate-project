@@ -14,10 +14,11 @@ use Illuminate\Http\Request;
 trait InteractWithPdf
 {
 
-    public function generatePdf(Student $student, Certificate $certificate, Request $request)
+    public function generatePdf(Student $student, Certificate $certificate, array $data)
     {
-        $data = $request->all();
-        $data['typeName'] = "asd";
+        $certificate = $certificate->load('types');
+      
+        $data['typeName'] = $certificate->types->name;
 
         $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
         $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));

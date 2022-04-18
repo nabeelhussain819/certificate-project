@@ -40,11 +40,11 @@
             /*border: 1px solid red;*/
         }
 
-        .input-bg {
-            background-color: #eaf1f7;
-            border-bottom: 1px solid black;
-            padding: 5px 15px
-        }
+        /*.input-bg {*/
+        /*    background-color: #eaf1f7;*/
+        /*    border-bottom: 1px solid black;*/
+        /*    padding: 5px 15px*/
+        /*}*/
 
         .second-page h3 {
             font-size: 12px;
@@ -109,28 +109,26 @@
     <table class="detail-table" style="width: 450px;margin:auto">
         <tr>
             <td>
-                <div
-                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">{{ $student->first_name }}</div>
+                <div>{{ $student->first_name }}</div>
 
                 <strong>Name</strong>
             </td>
             <td>
-                <div
-                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">{{ $student->last_name }}</div>
+                <div>{{ $student->last_name }}</div>
                 <strong>Geburtsdatum</strong>
             </td>
         </tr>
         <tr>
             <td>
                 <div
-                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">   {{ $student->date_of_birth }}</div>
+                    style="">   {{ $student->date_of_birth }}</div>
 
 
                 <strong>Vorname</strong>
             </td>
             <td>
                 <div
-                    style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">{{ $student->place_of_birth }}</div>
+                    style="">{{ $student->place_of_birth }}</div>
                 <strong>Geburtsort</strong>
             </td>
         </tr>
@@ -140,25 +138,25 @@
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="width: 400px;margin:auto">
         <tr>
-            <td> Leseverstehen</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Leseverstehen</td>
             <td><span class="input-bg">{{$data['listening']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
-            <td> Hörverstehen</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Hörverstehen</td>
             <td><span class="input-bg">{{$data['reading']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
-            <td> Schriftlicher Ausdruck</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Schriftlicher Ausdruck</td>
             <td><span class="input-bg">{{$data['writing']}}</span> / 15 Punkte</td>
         </tr>
         @if(isset($data['language_module']))
             <tr>
-                <td> Geburtsort</td>
+                <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Geburtsort</td>
                 <td><u>{{$data['language_module']}} </u> / 15 Punkte</td>
             </tr>
         @endif
         <tr>
-            <td> Mündlicher Ausdruck</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>  Mündlicher Ausdruck</td>
             <td><span class="input-bg">{{$data['oral']}} </span> / 15 Punkte</td>
         </tr>
     </table>
@@ -168,11 +166,11 @@
     <table class="score-table " style="width: 400px;margin:auto">
 
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Gesamtpunkte</td>
+            <td> Gesamtpunkte</td>
             <td><span class="input-bg"></span> / 60 Punkte</td>
         </tr>
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Prädikat</td>
+            <td>Prädikat</td>
             <td><span class="input-bg"></span> / 15 Punkte</td>
         </tr>
     </table>
@@ -245,31 +243,16 @@
         <table>
             <tr>
                 <td>
-                    <h5 style="text-align: center;>A1: Anfänger</h5>
+                    <h5 style="text-align: center;">A1: Anfänger</h5>
                     <p style=" font-size: 11px">
-                    Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
-                    verstehen und verwenden, die auf die Befriedigung konkreter
-                    Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
-                    Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
-                    für Leute sie kennen oder was für Dinge sie haben – und kann auf
-                    Fragen dieser Art Antwort geben. Kann sich auf einfache Art
-                    verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
-                    langsam und deutlich sprechen und bereit sind zu helfen.
-                    </p>
-                </td>
-                <td>
-                    <h5 style="text-align: center; >
-                        A2: An Die zustandigen Behorden
-                    </h5>
-                    <p style=" font-size: 11px">
-                    Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
-                    verstehen und verwenden, die auf die Befriedigung konkreter
-                    Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
-                    Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
-                    für Leute sie kennen oder was für Dinge sie haben – und kann auf
-                    Fragen dieser Art Antwort geben. Kann sich auf einfache Art
-                    verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
-                    langsam und deutlich sprechen und bereit sind zu helfen.
+                        Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
+                        verstehen und verwenden, die auf die Befriedigung konkreter
+                        Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
+                        Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
+                        für Leute sie kennen oder was für Dinge sie haben – und kann auf
+                        Fragen dieser Art Antwort geben. Kann sich auf einfache Art
+                        verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
+                        langsam und deutlich sprechen und bereit sind zu helfen.
                     </p>
                 </td>
             </tr>

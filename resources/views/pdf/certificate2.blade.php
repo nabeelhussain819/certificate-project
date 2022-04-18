@@ -40,11 +40,11 @@
             /*border: 1px solid red;*/
         }
 
-        .input-bg {
-            background-color: #eaf1f7;
-            border-bottom: 1px solid black;
-            padding: 5px 15px
-        }
+        /*.input-bg {*/
+        /*    background-color: #eaf1f7;*/
+        /*    border-bottom: 1px solid black;*/
+        /*    padding: 5px 15px*/
+        /*}*/
 
         .second-page h3 {
             font-size: 12px;
@@ -98,7 +98,7 @@
           margin-top:-30px;
          font-size: 30px;
           ">
-        Certificate nanem
+        {{  $data['typeName']}}
         {{--        Deutsch A1--}}
     </h5>
     <h5 style="font-size: 30px; margin-top:-30px;  margin:0;">Anfanger</h5>
@@ -109,24 +109,26 @@
     <table class="detail-table" style="width: 450px;margin:auto">
         <tr>
             <td>
-                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">Naveed</div>
+                <div>{{ $student->first_name }}</div>
 
                 <strong>Name</strong>
             </td>
             <td>
-                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">Nasib</div>
+                <div>{{ $student->last_name }}</div>
                 <strong>Geburtsdatum</strong>
             </td>
         </tr>
         <tr>
             <td>
-                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">12-jan-2012</div>
+                <div
+                    style="">   {{ $student->date_of_birth }}</div>
 
 
                 <strong>Vorname</strong>
             </td>
             <td>
-                <div style="background-color:#eaf1f7;border-bottom:1px solid black;padding:5px 15px">Karachi</div>
+                <div
+                    style="">{{ $student->place_of_birth }}</div>
                 <strong>Geburtsort</strong>
             </td>
         </tr>
@@ -137,20 +139,25 @@
     <table class="score-table " style="width: 400px;margin:auto">
         <tr>
             <td> Leseverstehen</td>
-            <td><span class="input-bg">2</span> / 15 Punkte</td>
+            <td><span class="input-bg">{{$data['listening']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
             <td> Hörverstehen</td>
-            <td><span class="input-bg">2</span> / 15 Punkte</td>
+            <td><span class="input-bg">{{$data['reading']}}</span> / 15 Punkte</td>
         </tr>
         <tr>
             <td> Schriftlicher Ausdruck</td>
-            <td><span class="input-bg">2</span> / 15 Punkte</td>
+            <td><span class="input-bg">{{$data['writing']}}</span> / 15 Punkte</td>
         </tr>
-
+        @if(isset($data['language_module']))
+            <tr>
+                <td> Geburtsort</td>
+                <td><u>{{$data['language_module']}} </u> / 15 Punkte</td>
+            </tr>
+        @endif
         <tr>
             <td> Mündlicher Ausdruck</td>
-            <td><span class="input-bg">2</span> / 15 Punkte</td>
+            <td><span class="input-bg">{{$data['oral']}} </span> / 15 Punkte</td>
         </tr>
     </table>
 </div>
@@ -236,31 +243,16 @@
         <table>
             <tr>
                 <td>
-                    <h5 style="text-align: center;>A1: Anfänger</h5>
+                    <h5 style="text-align: center;">A1: Anfänger</h5>
                     <p style=" font-size: 11px">
-                    Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
-                    verstehen und verwenden, die auf die Befriedigung konkreter
-                    Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
-                    Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
-                    für Leute sie kennen oder was für Dinge sie haben – und kann auf
-                    Fragen dieser Art Antwort geben. Kann sich auf einfache Art
-                    verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
-                    langsam und deutlich sprechen und bereit sind zu helfen.
-                    </p>
-                </td>
-                <td>
-                    <h5 style="text-align: center; >
-                        A2: An Die zustandigen Behorden
-                    </h5>
-                    <p style=" font-size: 11px">
-                    Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
-                    verstehen und verwenden, die auf die Befriedigung konkreter
-                    Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
-                    Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
-                    für Leute sie kennen oder was für Dinge sie haben – und kann auf
-                    Fragen dieser Art Antwort geben. Kann sich auf einfache Art
-                    verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
-                    langsam und deutlich sprechen und bereit sind zu helfen.
+                        Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
+                        verstehen und verwenden, die auf die Befriedigung konkreter
+                        Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
+                        Leuten Fragen zu ihrer Person stellen – z. B. wo sie wohnen, was
+                        für Leute sie kennen oder was für Dinge sie haben – und kann auf
+                        Fragen dieser Art Antwort geben. Kann sich auf einfache Art
+                        verständigen, wenn die Gesprächspartnerinnen oder Gesprächspartner
+                        langsam und deutlich sprechen und bereit sind zu helfen.
                     </p>
                 </td>
             </tr>
@@ -461,23 +453,23 @@
                     alt="logo-2"/>
             </td>
             <td>
-{{--                <div style="font-size: 11px;">--}}
-{{--                    <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>--}}
-{{--                    <ul>--}}
-{{--                        <li>sehr gut (1): (60 – 54 der Gesamtpunkte)</li>--}}
-{{--                        <li>gut (2): (53 – 48 der Gesamtpunkte)</li>--}}
-{{--                        <li>befriedigend (3): (47 – 42 der Gesamtpunkte)</li>--}}
-{{--                        <li>ausreichend (4): (41 – 36 der Gesamtpunkte)</li>--}}
-{{--                        <li>ungenügend (5): (0 – 35 der Gesamtpunkte)</li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
+                {{--                <div style="font-size: 11px;">--}}
+                {{--                    <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>--}}
+                {{--                    <ul>--}}
+                {{--                        <li>sehr gut (1): (60 – 54 der Gesamtpunkte)</li>--}}
+                {{--                        <li>gut (2): (53 – 48 der Gesamtpunkte)</li>--}}
+                {{--                        <li>befriedigend (3): (47 – 42 der Gesamtpunkte)</li>--}}
+                {{--                        <li>ausreichend (4): (41 – 36 der Gesamtpunkte)</li>--}}
+                {{--                        <li>ungenügend (5): (0 – 35 der Gesamtpunkte)</li>--}}
+                {{--                    </ul>--}}
+                {{--                </div>--}}
             </td>
             <td>
-               <div style="text-align: right">
-                   <img
-                       src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 120px"
-                       alt="logo2"/>
-               </div>
+                <div style="text-align: right">
+                    <img
+                        src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 120px"
+                        alt="logo2"/>
+                </div>
 
             </td>
         </tr>

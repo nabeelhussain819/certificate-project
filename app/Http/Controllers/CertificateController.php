@@ -57,15 +57,23 @@ class CertificateController extends Controller
             $certificate->save();
             $qrUrl = $this->generateQR($student, $certificate);
 
-            $this->generatePdf($student, $certificate, $request);
+            $this->generatePdf($student, $certificate, $request->all());
         });
     }
 
     public function getStudentCertificatePdf(Request $request)
     {
-        $pdf = PDF::loadView('pdf.certificate2');
-        return $pdf->download('invoice.pdf');
+        $student = Student::first()->load('certificates');
+        $certificate = $student->certificates->first();
 
+        $this->generatePdf($student, $certificate, [
+            'listening' => 1,
+            'reading' => 2,
+            'writing' => 2,
+            'language_module' => 2,
+            'oral' => 1
+        ]);
+        return Storage::url($student->guid . '/pdf/' . $certificate->guid . '.pdf');
     }
 
     public function studentShow(Request $request, Student $student)
@@ -75,7 +83,6 @@ class CertificateController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
     }
-
 
     /**
      * Store a newly created resource in storage.
