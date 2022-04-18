@@ -98,7 +98,7 @@
     </h3>
     <h5 style="
          margin:0;
-          margin-top:-30px;
+          margin-top:-60px;
          font-size: 30px;
           ">
         {{  $data['typeName']}}
