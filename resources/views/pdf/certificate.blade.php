@@ -57,6 +57,9 @@
         .second-page h5 {
             font-size: 11px;
         }
+        .bold{
+            font-weight: bolder;
+        }
     </style>
 
 </head>
@@ -247,7 +250,7 @@
         <table>
             <tr>
                 <td>
-                    <h5 style="text-align: center;">A1: Anfänger</h5>
+                    <h5 style="text-align: center;margin:0;padding:0" class="{{$data['alias'] == 'a1' ?'bold' :''}}">A1: Anfänger</h5>
                     <p style=" font-size: 11px">
                         Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
                         verstehen und verwenden, die auf die Befriedigung konkreter
@@ -259,7 +262,22 @@
                         langsam und deutlich sprechen und bereit sind zu helfen.
                     </p>
                 </td>
+                <td>
+                    <h5 style="text-align: center;margin:0;padding:0" class="{{$data['alias'] == 'a2' ?'bold' :''}}">A2 Grundlegende Kenntnisse</h5>
+                    <p style=" font-size: 11px">
+                        Kann vertraute, alltägliche Ausdrücke und ganz einfache
+                        Sätze verstehen und verwenden, die auf die Befriedigung
+                        konkreter Bedürfnisse zielen. Kann sich und andere
+                        vorstellen und anderen Leuten Fragen zu ihrer Person
+                        stellen – z. B. wo sie wohnen, was für Leute sie kennen
+                        oder was für Dinge sie haben – und kann auf Fragen dieser
+                        Art Antwort geben. Kann sich auf einfache Art verständigen,
+                        wenn die Gesprächspartnerinnen oder Gesprächspartner
+                        langsam und deutlich sprechen und bereit sind zu helfen
+                    </p>
+                </td>
             </tr>
+
         </table>
         {{-- <div style="display: flex; justify-content: center;flex-wrap: wrap;min-width: 100%;">
             <div style="text-align: justify; padding-right: 2%; width: 50%;">
@@ -297,7 +315,7 @@
         <h3 style="text-align: center;padding:5px;margin: 5px;">B: Selbstständige Sprachverwendung</h3>
         <table>
             <tr>
-                <td>
+                <td class="{{$data['alias'] == 'b1' ?'bold' :''}}">
                     <h5 style="text-align: center; padding:5px;margin: 5px;">
                         B1: Fortgeschrittene Sprachverwendung
                     </h5>
@@ -312,7 +330,7 @@
                         und Ansichten kurze Begründungen oder Erklärungen geben.
                     </p>
                 </td>
-                <td>
+                <td class="{{$data['alias'] == 'b2' ?'bold' :''}}">
                     <h5>
                         B2: Selbständige Sprachverwendung
                     </h5>
@@ -367,7 +385,7 @@
         <h3 style=" text-align: center;padding:5px;margin: 5px;">C: Kompetente Sprachverwendung</h3>
         <table>
             <tr>
-                <td>
+                <td class="{{$data['alias'] == 'c1' ?'bold' :''}}">
                     <h5 style="text-align: center; padding:5px;margin: 5px;">
                         C1: Fachkundige Sprachkenntnisse
                     </h5>
@@ -383,7 +401,7 @@
                         verwenden.
                     </p>
                 </td>
-                <td>
+                <td class="{{$data['alias'] == 'c2' ?'bold' :''}}">
                     <h5 style="text-align: center;padding:5px;margin: 5px;">
                         C2: Annähernd muttersprachliche Kenntnisse
                     </h5>
