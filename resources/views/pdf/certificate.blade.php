@@ -57,7 +57,8 @@
         .second-page h5 {
             font-size: 11px;
         }
-        .bold{
+
+        .bold {
             font-weight: bolder;
         }
     </style>
@@ -112,22 +113,22 @@
     <table class="detail-table" style="width: 450px;margin:auto">
         <tr>
             <td>
-                <div>{{ $student->first_name }}</div>
+                <div> {{ $student->first_name }}</div>
 
                 <strong>Name</strong>
             </td>
             <td>
                 <div>{{ $student->last_name }}</div>
-                <strong>Geburtsdatum</strong>
+                <strong>Vorname</strong>
             </td>
         </tr>
         <tr>
             <td>
                 <div
-                    style="">   {{ $student->date_of_birth }}</div>
+                    style="">   {{ $student->date_of_birth->format("d/m/Y") }}</div>
 
 
-                <strong>Vorname</strong>
+                <strong>Geburtsdatum</strong>
             </td>
             <td>
                 <div
@@ -249,8 +250,8 @@
         <h3 style="text-align: center;padding:5px;margin: 5px">A: Elementare Sprachverwendung</h3>
         <table>
             <tr>
-                <td>
-                    <h5 style="text-align: center;margin:0;padding:0" class="{{$data['alias'] == 'a1' ?'bold' :''}}">A1: Anfänger</h5>
+                <td class="{{$data['alias'] == 'a1' ?'bold' :''}}">
+                    <h5 style="text-align: center;margin:0;padding:0">A1: Anfänger</h5>
                     <p style=" font-size: 11px">
                         Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
                         verstehen und verwenden, die auf die Befriedigung konkreter
@@ -262,8 +263,8 @@
                         langsam und deutlich sprechen und bereit sind zu helfen.
                     </p>
                 </td>
-                <td>
-                    <h5 style="text-align: center;margin:0;padding:0" class="{{$data['alias'] == 'a2' ?'bold' :''}}">A2 Grundlegende Kenntnisse</h5>
+                <td class="{{$data['alias'] == 'a2' ?'bold' :''}}">
+                    <h5 style="text-align: center;margin:0;padding:0">A2 Grundlegende Kenntnisse</h5>
                     <p style=" font-size: 11px">
                         Kann vertraute, alltägliche Ausdrücke und ganz einfache
                         Sätze verstehen und verwenden, die auf die Befriedigung
