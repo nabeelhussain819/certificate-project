@@ -18,9 +18,10 @@ trait InteractWithPdf
     {
         $certificate = $certificate->load('types');
 
+        $data['language_module'] = $certificate->types->has_module;
         $data['typeName'] = $certificate->types->name;
         $data['qrUrl'] = "/storage/$student->guid/qr/$certificate->guid." . Certificate::QR_FORMAT;
-        $data['alias']=   $certificate->types->alias;
+        $data['alias'] = $certificate->types->alias;
         $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
         $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data'));
         $content = $pdf->download()->getOriginalContent();

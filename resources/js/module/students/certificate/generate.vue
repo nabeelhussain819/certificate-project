@@ -19,7 +19,7 @@
                     <a-select-option
                         v-for="certificate in types"
                         :key="certificate.id"
-                        :data-hasLanguageModule="certificate.has_language"
+                        :data-hasLanguageModule="certificate.has_module"
                         >{{ certificate.name }}</a-select-option
                     >
                 </a-select>
