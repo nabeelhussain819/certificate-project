@@ -19,17 +19,18 @@ return new class extends Migration {
             $table->string('total_marks')->nullable();
             $table->boolean('has_module')->default(false);
             $table->uuid('guid')->unique();
+            $table->string('punkte')->nullable();
         });
 
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
 
-            $table->string('listening')->nullable();
-            $table->string('reading')->nullable();
-            $table->string('language_module')->nullable();
-            $table->string('writing')->nullable();
-            $table->string('oral')->nullable();
+            $table->string('Hörverstehen')->nullable();
+            $table->string('Leseverstehen')->nullable();
+            $table->string('Geburtsort')->nullable();
+            $table->string('Schriftlicher_Ausdruck')->nullable();
+            $table->string('Mündlicher_Ausdruck')->nullable();
             $table->uuid('guid')->unique();
             $table->unsignedBigInteger('certificate_type_id')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();

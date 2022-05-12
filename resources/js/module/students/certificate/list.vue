@@ -1,30 +1,22 @@
 <template>
-    <a-table
-        :loading="loading"
-        :pagination="false"
-        :columns="studentsColumn"
-        :dataSource="dataSource"
-    >
+    <a-table :loading="loading" :pagination="false" :columns="studentsColumn" :dataSource="dataSource">
         <span slot="title">
             <a-row>
                 <a-col :span="12">
-                    <h3>{{ this.student.name }}</h3></a-col
-                >
+                    <h3>{{ this.student.name }}</h3>
+                </a-col>
                 <a-col class="text-right" :span="12">
                     <a-button @click="showCertificateModa" type="primary">
                         <a-icon type="printer" /> Generate New
-                        Certificate</a-button
-                    ></a-col
-                >
+                        Certificate
+                    </a-button>
+                </a-col>
             </a-row>
         </span>
         <span slot="action" slot-scope="text, record">
             <a-tooltip>
                 <template slot="title">PDF</template>
-                <a
-                    target="_blank"
-                    :href="`storage/${record.student.guid}/pdf/${record.guid}.pdf`"
-                >
+                <a target="_blank" :href="`storage/${record.student.guid}/pdf/${record.guid}.pdf`">
                     <a-button type="danger">
                         <a-icon type="file-pdf" />
                     </a-button>
@@ -32,10 +24,7 @@
             </a-tooltip>
             <a-tooltip>
                 <template slot="title">QR Code </template>
-                <a
-                    target="_blank"
-                    :href="`storage/${record.student.guid}/qr/${record.guid}.png`"
-                >
+                <a target="_blank" :href="`storage/${record.student.guid}/qr/${record.guid}.png`">
                     <a-button v-on:click="studentView(record)" type="primary">
                         <a-icon type="printer" />
                     </a-button>
@@ -46,37 +35,38 @@
 </template>
 
 <script>
-import CertificateServices from "../../../services/API/CertificateServices";
+import CertificateService from "../../../services/API/CertificateServices";
+
 const studentsColumn = [
     {
         title: "Type",
-        dataIndex: "types.name",
+        dataIndex: "types.alias",
         key: "type",
     },
     {
-        title: "Listening",
-        key: "listening",
-        dataIndex: "listening",
+        title: "Hörverstehen",
+        key: "Hörverstehen",
+        dataIndex: "Hörverstehen",
     },
     {
-        title: "Writing",
-        key: "writing",
-        dataIndex: "writing",
+        title: "Schriftlicher Ausdruck",
+        key: "Schriftlicher_Ausdruck",
+        dataIndex: "Schriftlicher_Ausdruck",
     },
     {
-        title: "Oral",
-        key: "oral",
-        dataIndex: "oral",
+        title: "Mündlicher Ausdruck",
+        key: "Mündlicher_Ausdruck",
+        dataIndex: "Mündlicher_Ausdruck",
     },
     {
-        title: "Reading",
-        key: "reading",
-        dataIndex: "reading",
+        title: "Leseverstehen",
+        key: "Leseverstehen",
+        dataIndex: "Leseverstehen",
     },
     {
-        title: "Language Module",
-        key: "language_module",
-        dataIndex: "language_module",
+        title: "Geburtsort ",
+        key: "Geburtsort",
+        dataIndex: "Geburtsort",
     },
     {
         title: "Action",
@@ -96,6 +86,7 @@ export default {
             dataSource: [],
         };
     },
+
     mounted() {
         this.$emit("loadCertificate", this.fetchStudentCertificate);
         this.fetchStudentCertificate();
@@ -106,7 +97,7 @@ export default {
         },
         fetchStudentCertificate() {
             this.loading = true;
-            CertificateServices.showStudentCertificate(this.student.id)
+            CertificateService.showStudentCertificate(this.student.id)
                 .then((certificates) => {
                     this.dataSource = certificates;
                 })

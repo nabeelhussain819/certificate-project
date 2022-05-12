@@ -70,13 +70,13 @@
 <div class="clearfix">
     <div style="float:left; width:600px ; overflow: auto;"><img
             width="120px"
-            src="{{ public_path('/images/pdf/doted-menu.png') }}" style="display:block;max-width: 550px"
+            src="{{ public_path('/images/pdf/main-logo2.JPG') }}" style="display:block;max-width: 550px"
             alt="logo1"/>
     </div>
 
     <div>
         <div style="float:right; width:150px;  overflow: auto;"><img
-                src="{{ public_path('/images/pdf/star-german.png') }}" style="display:block;max-width: 400px"
+                src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 400px"
                 alt="logo1"/>
         </div>
 
@@ -86,26 +86,25 @@
 <div style=" overflow: auto;"></div>
 <!-- column 1 -->
 <div class="clearfix" style="text-align: center;margin-top: -20px;">
-
+<h4 style="font-size: 35px; line-height: 1; text-align: center; margin-top:-70px;"> Worldwide Bildungswerk</h4><br />
     <h3 style="
-            margin-top:-105px;
+            margin-top:-60px;
             font-size: 75px;
             line-height: 1;
             text-align: center;" class="border">
-        <span
-            style="font-weight: bold;line-height: 1; display:inline-block;text-align: center;width: 100%; font-size: 35px;">Worldwide Bildungswerk</span>
-        <br>
+
         Zertifikat
     </h3>
+
     <h5 style="
          margin:0;
           margin-top:-60px;
          font-size: 30px;
           ">
-        {{  $data['typeName']}}
+        Deutsch {{$data['alias']}}
         {{--        Deutsch A1--}}
     </h5>
-    <h5 style="font-size: 30px; margin-top:-30px;  margin:0;">Anfanger</h5>
+    <h5 style="font-size: 30px; margin-top:-30px;  margin:0;">({{$data['typeName']}})</h5>
 </div>
 
 
@@ -125,7 +124,7 @@
         <tr>
             <td>
                 <div
-                    style="">   {{ $student->date_of_birth->format("d/m/Y") }}</div>
+                    style=""> {{ $student->date_of_birth->format("d/m/Y") }}</div>
 
 
                 <strong>Geburtsdatum</strong>
@@ -142,26 +141,27 @@
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="width: 400px;margin:auto">
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Leseverstehen</td>
-            <td><span class="input-bg">{{$data['listening']}}</span> / 15 Punkte</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>Hörverstehen </td>
+            <td><span class="input-bg">{{$data['Hörverstehen']}}</span> /{{$data['punkte']}} punkte</td>
         </tr>
+
         <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Hörverstehen</td>
-            <td><span class="input-bg">{{$data['reading']}}</span> / 15 Punkte</td>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Leseverstehen</td>
+            <td><span class="input-bg">{{$data['Leseverstehen']}}</span>@if($data['language_module']) / 30 punkte @else /{{$data['punkte']}} punkte @endIf</td>
         </tr>
         <tr>
             <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Schriftlicher Ausdruck</td>
-            <td><span class="input-bg">{{$data['writing']}}</span> / 15 Punkte</td>
+            <td><span class="input-bg">{{$data['Schriftlicher_Ausdruck']}}</span> / {{$data['punkte']}} punkte</td>
         </tr>
-        @if(isset($data['language_module']))
+        @if($data['language_module'])
             <tr>
                 <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Geburtsort</td>
-                <td><u>{{$data['language_module']}} </u> / 15 Punkte</td>
+                <td><u>{{$data['Geburtsort']}} </u> / {{$data['punkte']}} punkte</td>
             </tr>
         @endif
         <tr>
             <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Mündlicher Ausdruck</td>
-            <td><span class="input-bg">{{$data['oral']}} </span> / 15 Punkte</td>
+            <td><span class="input-bg">{{$data['Mündlicher_Ausdruck']}} </span> / {{$data['punkte']}} punkte</td>
         </tr>
     </table>
 </div>
@@ -171,7 +171,7 @@
 
         <tr>
             <td> Gesamtpunkte</td>
-            <td><span class="input-bg"></span> / 60 Punkte</td>
+            <td><span class="input-bg"></span> / {{$data['total_marks']}} punkte</td>
         </tr>
         <tr>
             <td>Prädikat</td>
@@ -214,7 +214,7 @@
     <img
         src="{{public_path() . $data['qrUrl'] }}"
         style="max-width: 100px;float:left"/>
-
+        <!-- <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="max-width: 100px;float:left;"/> -->
 </div>
 
 <div style="page-break-before:always">&nbsp;</div>
@@ -468,12 +468,14 @@
     <table style="min-width:100%;">
         <tr>
             <td>
+            <div style="text-align: left">
                 <img
-                    src="{{ public_path('/images/pdf/textlogo.png') }}" style="display:block;max-width: 105px"
+                    src="{{ public_path('/images/pdf/Capture.PNG') }}" style="display:block;max-width: 105px"
                     alt="logo-2"/>
-                <img
+                <!-- <img
                     src="{{ public_path('/images/pdf/footer-tet-logo.png') }}" style="display:block;max-width: 105px"
-                    alt="logo-2"/>
+                    alt="logo-2"/> -->
+                    </div>
             </td>
             <td>
                 {{--                <div style="font-size: 11px;">--}}

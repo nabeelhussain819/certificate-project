@@ -24,5 +24,5 @@ class CertificateType extends Base
     /**
      * @var array
      */
-    protected $fillable = ['alias', 'name', 'total_marks', 'has_module', 'guid'];
+    protected $fillable = ['alias', 'name', 'total_marks', 'has_module', 'guid','punkte'];
 }

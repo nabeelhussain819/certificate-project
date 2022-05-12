@@ -1,92 +1,61 @@
 <template>
     <a-spin :spinning="loading">
-        <a-form
-            :label-col="{ span: 6 }"
-            :wrapper-col="{ span: 18 }"
-            @submit="onSubmit"
-            :form="form"
-        >
+        <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" @submit="onSubmit" :form="form">
             <a-form-item label="Type">
-                <a-select
-                    v-decorator="[
-                        'certificate_type_id',
-                        {
-                            rules: [{ required: true }],
-                        },
-                    ]"
-                    @select="onTypeSelect"
-                >
-                    <a-select-option
-                        v-for="certificate in types"
-                        :key="certificate.id"
-                        :data-hasLanguageModule="certificate.has_module"
-                        >{{ certificate.name }}
+                <a-select v-decorator="[
+                    'certificate_type_id',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]" @select="onTypeSelect">
+                    <a-select-option v-for="certificate in types" :key="certificate.id"
+                        :data-hasLanguageModule="certificate.has_module">{{ certificate.alias }}
                     </a-select-option>
                 </a-select>
             </a-form-item>
-            <a-form-item label="Listening">
-                <a-input
-                    v-decorator="[
-                        'listening',
-                        {
-                            rules: [{ required: true }],
-                        },
-                    ]"
-                ></a-input>
+            <a-form-item label="Leseverstehen">
+                <a-input v-decorator="[
+                    'Leseverstehen',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]"></a-input>
             </a-form-item>
-            <a-form-item label="Reading">
-                <a-input
-                    v-decorator="[
-                        'reading',
-                        {
-                            rules: [{ required: true }],
-                        },
-                    ]"
-                ></a-input>
+            <a-form-item label="Hörverstehen">
+                <a-input v-decorator="[
+                    'Hörverstehen',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]"></a-input>
             </a-form-item>
-            <a-form-item v-if="hasLanguageModule" label="Language Modules">
-                <a-input
-                    v-decorator="[
-                        'language_module',
-                        {
-                            rules: [{ required: true }],
-                        },
-                    ]"
-                ></a-input>
+            <a-form-item v-if="hasLanguageModule" label="Geburtsort">
+                <a-input v-decorator="[
+                    'Geburtsort',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]"></a-input>
             </a-form-item>
-            <a-form-item label="Writing">
-                <a-input
-                    v-decorator="[
-                        'writing',
-                        {
-                            rules: [{ required: true }],
-                        },
-                    ]"
-                ></a-input>
+            <a-form-item label="Schriftlicher Ausdruck">
+                <a-input v-decorator="[
+                    'Schriftlicher_Ausdruck',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]"></a-input>
             </a-form-item>
-            <a-form-item label="Oral">
-                <a-input-number
-                    width="100%"
-                    v-decorator="[
-                        'oral',
-                        {
-                            rules: [{ required: true }],
-                        },
-                    ]"
-                ></a-input-number>
+            <a-form-item label="Mündlicher Ausdruck">
+                <a-input-number width="100%" v-decorator="[
+                    'Mündlicher_Ausdruck',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]"></a-input-number>
             </a-form-item>
-
-            <a-form-item
-                :label-col="{ span: 0 }"
-                :wrapper-col="{ span: 24 }"
-                class="text-right"
-            >
-                <ActionButton
-                    class="text-right"
-                    :is-created="isCreated"
-                    :loading="loading"
-                    text="Generate Certificate"
-                />
+            <a-form-item :label-col="{ span: 0 }" :wrapper-col="{ span: 24 }" class="text-right">
+                <ActionButton class="text-right" :is-created="isCreated" :loading="loading"
+                    text="Generate Certificate" />
             </a-form-item>
         </a-form>
     </a-spin>

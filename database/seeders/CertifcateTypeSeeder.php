@@ -20,34 +20,46 @@ class CertifcateTypeSeeder extends Seeder
 
             [
                 [
-                    'alias' => 'a1',
-                    'name' => 'A1',
+                    'alias' => 'A1',
+                    'name' => 'Anfanger',
                     'has_module' => false,
                     'total_marks' => 60,
-                    'guid' => GuidHelper::getGuid()
+                    'guid' => GuidHelper::getGuid(),
+                    "punkte"=>15
                 ],
                 [
-                    'alias' => 'a2',
-                    'name' => 'A2',
+                    'alias' => 'A2',
+                    'name' => 'Grundlegende Kenntnisse',
                     'has_module' => false,
                     'total_marks' => 60,
-                    'guid' => GuidHelper::getGuid()
+                    'guid' => GuidHelper::getGuid(),
+                    "punkte"=>15
                 ], [
-                'alias' => 'b1', 'name' => 'B1',
+                'alias' => 'B1', 'name' => 'Fortgeschrittene Sprachverwendung',
                 'has_module' => false,
-                'total_marks' => 60,
-                'guid' => GuidHelper::getGuid()
+                'total_marks' => 100,
+                'guid' => GuidHelper::getGuid(),
+                "punkte"=>20
             ], [
-                'alias' => 'b2', 'name' => 'B2',
+                'alias' => 'B2', 'name' => 'Selbstandige Sprachverwendung',
                 'has_module' => true,
-                'total_marks' => 60,
-                'guid' => GuidHelper::getGuid()
+                'total_marks' => 100,
+                'guid' => GuidHelper::getGuid(),
+                "punkte"=>20
             ],
                 [
-                    'alias' => 'c1', 'name' => 'C1',
+                    'alias' => 'C1', 'name' => 'Fachkundige Sprachverwendung',
                     'has_module' => true,
-                    'total_marks' => 60,
-                    'guid' => GuidHelper::getGuid()
+                    'total_marks' => 130,
+                    'guid' => GuidHelper::getGuid(),
+                    "punkte"=>25
+                ]
+                , [
+                    'alias' => 'C2', 'name' => 'Annahernd muttersprachliche kenntnisse',
+                    'has_module' => true,
+                    'total_marks' => 130,
+                    'guid' => GuidHelper::getGuid(),
+                    "punkte"=>25
                 ]
             ]
         );
