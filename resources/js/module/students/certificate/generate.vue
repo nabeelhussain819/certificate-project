@@ -29,9 +29,9 @@
                     },
                 ]"></a-input>
             </a-form-item>
-            <a-form-item v-if="hasLanguageModule" label="Geburtsort">
+            <a-form-item v-if="hasLanguageModule" label="Sprachbausteine">
                 <a-input v-decorator="[
-                    'Geburtsort',
+                    'Sprachbausteine',
                     {
                         rules: [{ required: true }],
                     },

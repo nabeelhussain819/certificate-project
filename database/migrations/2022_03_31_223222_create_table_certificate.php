@@ -25,10 +25,9 @@ return new class extends Migration {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-
-            $table->string('Hörverstehen')->nullable();
             $table->string('Leseverstehen')->nullable();
-            $table->string('Geburtsort')->nullable();
+            $table->string('Hörverstehen')->nullable();
+            $table->string('Sprachbausteine')->nullable();
             $table->string('Schriftlicher_Ausdruck')->nullable();
             $table->string('Mündlicher_Ausdruck')->nullable();
             $table->uuid('guid')->unique();

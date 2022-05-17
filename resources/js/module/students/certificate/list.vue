@@ -64,9 +64,9 @@ const studentsColumn = [
         dataIndex: "Leseverstehen",
     },
     {
-        title: "Geburtsort ",
-        key: "Geburtsort",
-        dataIndex: "Geburtsort",
+        title: "Sprachbausteine ",
+        key: "Sprachbausteine",
+        dataIndex: "Sprachbausteine",
     },
     {
         title: "Action",

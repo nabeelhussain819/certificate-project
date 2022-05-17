@@ -30,12 +30,14 @@
         }
 
         body {
+
+        }
+        .first-page{
             background-image: url('{{public_path('/images/pdf/water-mark.png')}}');
             background-repeat: no-repeat;
             background-position: right top;
             background-attachment: fixed;
         }
-
         .border {
             /*border: 1px solid red;*/
         }
@@ -45,7 +47,12 @@
         /*    border-bottom: 1px solid black;*/
         /*    padding: 5px 15px*/
         /*}*/
-
+            .second-page{
+            background-image: url('{{public_path('/images/pdf/water-mark.png')}}');
+            background-repeat: no-repeat;
+            background-position: left top;
+            background-attachment: fixed;
+            }
         .second-page h3 {
             font-size: 12px;
         }
@@ -67,6 +74,7 @@
 
 <body>
 <!-- Section One -->
+<div class="first-page">
 <div class="clearfix">
     <div style="float:left; width:600px ; overflow: auto;"><img
             width="120px"
@@ -76,7 +84,7 @@
 
     <div>
         <div style="float:right; width:150px;  overflow: auto;"><img
-                src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 400px"
+                src="{{ public_path('/images/pdf/star-german.png') }}" style="display:block;max-width: 400px"
                 alt="logo1"/>
         </div>
 
@@ -140,23 +148,24 @@
 
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="width: 400px;margin:auto">
+    <tr>
+            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Leseverstehen</td>
+            <td><span class="input-bg">{{$data['Leseverstehen']}}</span>/{{$data['punkte']}} punkte</td>
+        </tr>
         <tr>
             <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/>Hörverstehen </td>
             <td><span class="input-bg">{{$data['Hörverstehen']}}</span> /{{$data['punkte']}} punkte</td>
         </tr>
 
-        <tr>
-            <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Leseverstehen</td>
-            <td><span class="input-bg">{{$data['Leseverstehen']}}</span>@if($data['language_module']) / 30 punkte @else /{{$data['punkte']}} punkte @endIf</td>
-        </tr>
+
         <tr>
             <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Schriftlicher Ausdruck</td>
             <td><span class="input-bg">{{$data['Schriftlicher_Ausdruck']}}</span> / {{$data['punkte']}} punkte</td>
         </tr>
         @if($data['language_module'])
             <tr>
-                <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Geburtsort</td>
-                <td><u>{{$data['Geburtsort']}} </u> / {{$data['punkte']}} punkte</td>
+                <td><img width="10" alt="" src="{{ public_path('/images/pdf/tick.png') }}"/> Sprachbausteine</td>
+                <td><span class="input-bg">{{$data['Sprachbausteine']}} </span>  @if($data['language_module'] && $data['punkte'] == 25) / 30 punkte @else /{{$data['punkte']}} punkte @endIf</td>
             </tr>
         @endif
         <tr>
@@ -171,11 +180,17 @@
 
         <tr>
             <td> Gesamtpunkte</td>
-            <td><span class="input-bg"></span> / {{$data['total_marks']}} punkte</td>
+            <td><span class="input-bg"></span>
+            @if($data['language_module'])
+             {{$data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck'] + $data['Sprachbausteine'] +$data['Mündlicher_Ausdruck']}}
+             @else
+             {{$data['Hörverstehen']  + $data['Schriftlicher_Ausdruck'] + $data['Leseverstehen'] +$data['Mündlicher_Ausdruck']}}
+             @endif
+              / {{$data['total_marks']}} punkte</td>
         </tr>
         <tr>
             <td>Prädikat</td>
-            <td><span class="input-bg"></span> / 15 Punkte</td>
+            <td><u>befriedigend (3)</u></td>
         </tr>
     </table>
 </div>
@@ -217,6 +232,8 @@
         <!-- <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="max-width: 100px;float:left;"/> -->
 </div>
 
+</div>
+
 <div style="page-break-before:always">&nbsp;</div>
 <!-- Section two -->
 <div class="second-page" style="padding: 0px; font-family: sans-serif;max-height: 75%;">
@@ -241,7 +258,7 @@
             befasst sich mit der Beurteilung von Fortschritten in den Lernerfolgen
             bezüglich einer Fremdsprache. Ziel ist, die verschiedenen europäischen
             Sprachzertifikate untereinander vergleichbar zu machen und einen
-            Maßstab für den Erwerb von Sprachkenntnissen zu schaffen. Die
+            Maßstab für den Erwerb von Sprachkenntnissen zu schaffen.<br /> Die
             Niveaustufen des GER und die gr undlegenden Level sind:
         </p>
     </div>
@@ -250,8 +267,11 @@
         <h3 style="text-align: center;padding:5px;margin: 5px">A: Elementare Sprachverwendung</h3>
         <table>
             <tr>
-                <td class="{{$data['alias'] == 'a1' ?'bold' :''}}">
-                    <h5 style="text-align: center;margin:0;padding:0">A1: Anfänger</h5>
+                <td class="{{$data['alias'] == 'A1' ?'bold' :''}}">
+                    <p style="text-align: center;margin:0;padding:0">
+                    @if($data['alias'] == 'A1') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
+                    @endif A1: Anfänger
+                  </p>
                     <p style=" font-size: 11px">
                         Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
                         verstehen und verwenden, die auf die Befriedigung konkreter
@@ -263,8 +283,11 @@
                         langsam und deutlich sprechen und bereit sind zu helfen.
                     </p>
                 </td>
-                <td class="{{$data['alias'] == 'a2' ?'bold' :''}}">
-                    <h5 style="text-align: center;margin:0;padding:0">A2 Grundlegende Kenntnisse</h5>
+                <td class="{{$data['alias'] == 'A2' ?'bold' :''}}">
+                    <p style="text-align: center;margin:0;padding:0">
+                    @if($data['alias'] == 'A2') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
+                    @endif A2 Grundlegende Kenntnisse
+                    </p>
                     <p style=" font-size: 11px">
                         Kann vertraute, alltägliche Ausdrücke und ganz einfache
                         Sätze verstehen und verwenden, die auf die Befriedigung
@@ -316,10 +339,13 @@
         <h3 style="text-align: center;padding:5px;margin: 5px;">B: Selbstständige Sprachverwendung</h3>
         <table>
             <tr>
-                <td class="{{$data['alias'] == 'b1' ?'bold' :''}}">
-                    <h5 style="text-align: center; padding:5px;margin: 5px;">
-                        B1: Fortgeschrittene Sprachverwendung
-                    </h5>
+                <td class="{{$data['alias'] == 'B1' ?'bold' :''}}">
+                    <p style="text-align: center; padding:5px;margin: 5px;">
+
+                        @if($data['alias'] == 'B1') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
+                        @endif B1: Fortgeschrittene Sprachverwendung
+
+                    </p>
                     <p>
                         Kann die Hauptpunkte verstehen, wenn klare Standardsprache
                         verwendet wird und wenn es um vertraute Dinge aus Arbeit, Schule,
@@ -331,10 +357,12 @@
                         und Ansichten kurze Begründungen oder Erklärungen geben.
                     </p>
                 </td>
-                <td class="{{$data['alias'] == 'b2' ?'bold' :''}}">
-                    <h5>
-                        B2: Selbständige Sprachverwendung
-                    </h5>
+                <td class="{{$data['alias'] == 'B2' ?'bold' :''}}">
+                    <p style="text-align: center; padding:5px;margin: 5px;">
+                    @if($data['alias'] == 'B2') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> @endif
+                  B2: Selbständige Sprachverwendung
+
+                    </p>
                     <p>
                         Kann die Hauptinhalte komplexer Texte zu konkreten und abstrakten
                         Themen verstehen; versteht im eigenen Spezialgebiet auch
@@ -386,10 +414,12 @@
         <h3 style=" text-align: center;padding:5px;margin: 5px;">C: Kompetente Sprachverwendung</h3>
         <table>
             <tr>
-                <td class="{{$data['alias'] == 'c1' ?'bold' :''}}">
-                    <h5 style="text-align: center; padding:5px;margin: 5px;">
-                        C1: Fachkundige Sprachkenntnisse
-                    </h5>
+                <td class="{{$data['alias'] == 'C1' ?'bold' :''}}">
+                    <p style="text-align: center; padding:5px;margin: 5px;">
+                    @if($data['alias'] == 'C1') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
+                    @endif   C1: Fachkundige Sprachkenntnisse
+
+                    </p>
                     <p style="font-size: 11px">
                         Kann ein breites Spektrum anspruchsvoller, längerer Texte
                         verstehen und auch implizite Bedeutungen erfassen. Kann sich
@@ -402,10 +432,11 @@
                         verwenden.
                     </p>
                 </td>
-                <td class="{{$data['alias'] == 'c2' ?'bold' :''}}">
-                    <h5 style="text-align: center;padding:5px;margin: 5px;">
-                        C2: Annähernd muttersprachliche Kenntnisse
-                    </h5>
+                <td class="{{$data['alias'] == 'C2' ?'bold' :''}}">
+                    <p style="text-align: center;padding:5px;margin: 5px;">
+                    @if($data['alias'] == 'C2') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
+                    @endif C2: Annähernd muttersprachliche Kenntnisse
+                    </p>
                     <p style="font-size: 11px;padding:5px;margin: 5px;">
                         Kann praktisch alles, was er/sie liest oder hört, mühelos
                         verstehen. Kann Informationen aus verschiedenen schriftlichen und
@@ -451,21 +482,88 @@
          </div>
      </div> --}}
     </div>
-
-    <div style="text-align: center">
+            @if($data['alias'] == 'A1' )
+            <div style=" text-align:left ; padding-left:220px;">
         <div style="font-size: 11px;">
             <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
             <ul style="">
-                <li>sehr gut (1): (60 – 54 der Gesamtpunkte)</li>
-                <li>gut (2): (53 – 48 der Gesamtpunkte)</li>
-                <li>befriedigend (3): (47 – 42 der Gesamtpunkte)</li>
-                <li>ausreichend (4): (41 – 36 der Gesamtpunkte)</li>
-                <li>ungenügend (5): (0 – 35 der Gesamtpunkte)</li>
+                <li>sehr gut (1) (60 – 54 der Gesamtpunkte)</li>
+                <li>gut (2) (53 – 48 der Gesamtpunkte)</li>
+                <li>befriedigend (3) (47 – 42 der Gesamtpunkte)</li>
+                <li>ausreichend (4) (41 – 36 der Gesamtpunkte)</li>
+                <li>ungenügend (5) ( 0 - 35 der Gesamtpunkte)</li>
             </ul>
         </div>
     </div>
+            @elseif($data['alias'] == 'A2')
+            <div style=" text-align:left ; padding-left:220px;">
+        <div style="font-size: 11px;">
+            <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
+            <ul style="">
+                <li>sehr gut (1) (60 – 54 der Gesamtpunkte)</li>
+                <li>gut (2) (53 – 48 der Gesamtpunkte)</li>
+                <li>befriedigend (3) (47 – 42 der Gesamtpunkte)</li>
+                <li>ausreichend (4) (41 – 36 der Gesamtpunkte)</li>
+                <li>ungenügend (5) ( 0 - 35 der Gesamtpunkte)</li>
+            </ul>
+        </div>
+    </div>
+            @elseif($data['alias'] == 'B1')
+            <div style=" text-align:left ; padding-left:220px;">
+        <div style="font-size: 11px;">
+            <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
+            <ul style="">
+                <li>sehr gut (1) (100 – 90 der Gesamtpunkte)</li>
+                <li>gut (2) (80 – 89 der Gesamtpunkte)</li>
+                <li>befriedigend (3) (70 – 79 der Gesamtpunkte)</li>
+                <li>ausreichend (4) (60 – 69 der Gesamtpunkte)</li>
+                <li>ungenügend (5) (0 - 59 der Gesamtpunkte)</li>
+            </ul>
+        </div>
+    </div>
+            @elseif($data['alias'] == 'B2')
+            <div style=" text-align:left ; padding-left:220px;">
+        <div style="font-size: 11px;">
+            <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
+            <ul style="">
+                <li>sehr gut (1) (100 – 90 der Gesamtpunkte)</li>
+                <li>gut (2) (80 – 89 der Gesamtpunkte)</li>
+                <li>befriedigend (3) (70 – 79 der Gesamtpunkte)</li>
+                <li>ausreichend (4) (60 – 69 der Gesamtpunkte)</li>
+                <li>ungenügend (5) (0 - 59 der Gesamtpunkte)</li>
+            </ul>
+        </div>
+    </div>
+            @elseif($data['alias'] == 'C1')
+            <div style=" text-align:left ; padding-left:220px;">
+        <div style="font-size: 11px;">
+            <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
+            <ul style="">
+                <li>sehr gut (1) (130 – 119 der Gesamtpunkte)</li>
+                <li>gut (2) (118 – 104 der Gesamtpunkte)</li>
+                <li>befriedigend (3) (103 – 91 der Gesamtpunkte)</li>
+                <li>ausreichend (4) (90 – 78 der Gesamtpunkte)</li>
+                <li>ungenügend (5) (0 - 89 der Gesamtpunkte)</li>
+            </ul>
+        </div>
+    </div>
+            @elseif($data['alias'] == 'C2')
+            <div style=" text-align:left ; padding-left:220px;">
+        <div style="font-size: 11px;">
+            <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Notenstufe und Notenschlüssel </span>
+            <ul style="">
+                <li>sehr gut (1) (130 – 119 der Gesamtpunkte)</li>
+                <li>gut (2) (118 – 104 der Gesamtpunkte)</li>
+                <li>befriedigend (3) (103 – 91 der Gesamtpunkte)</li>
+                <li>ausreichend (4) (90 – 78 der Gesamtpunkte)</li>
+                <li>ungenügend (5) (0 - 89 der Gesamtpunkte)</li>
+            </ul>
+        </div>
+    </div>
+    @endif
+
     <!-- column 4 -->
-    <table style="min-width:100%;">
+    <table style="min-width:100%; margin-top:-70px">
         <tr>
             <td>
             <div style="text-align: left">

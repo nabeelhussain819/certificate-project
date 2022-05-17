@@ -37,7 +37,7 @@ class Certificate extends Base
     /**
      * @var array
      */
-    protected $fillable = ['student_id', 'certificate_type_id', 'Hörverstehen', 'Leseverstehen', 'Geburtsort', 'Schriftlicher_Ausdruck', 'guid', 'Mündlicher_Ausdruck', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
+    protected $fillable = ['student_id', 'certificate_type_id','Leseverstehen', 'Hörverstehen',  'Sprachbausteine', 'Schriftlicher_Ausdruck', 'guid', 'Mündlicher_Ausdruck', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
 
     const QR_FORMAT = "png";
 
