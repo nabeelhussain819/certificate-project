@@ -132,7 +132,7 @@
         <tr>
             <td>
                 <div
-                    style=""> {{ $student->date_of_birth->format("d/m/Y") }}</div>
+                    style=""> {{ $student->dob }}</div>
 
 
                 <strong>Geburtsdatum</strong>
@@ -563,16 +563,16 @@
     @endif
 
     <!-- column 4 -->
-    <table style="min-width:100%; margin-top:-70px">
+    <table style="min-width:100%;">
         <tr>
             <td>
             <div style="text-align: left">
                 <img
                     src="{{ public_path('/images/pdf/Capture.PNG') }}" style="display:block;max-width: 105px"
                     alt="logo-2"/>
-                <!-- <img
+                <img
                     src="{{ public_path('/images/pdf/footer-tet-logo.png') }}" style="display:block;max-width: 105px"
-                    alt="logo-2"/> -->
+                    alt="logo-2"/>
                     </div>
             </td>
             <td>
