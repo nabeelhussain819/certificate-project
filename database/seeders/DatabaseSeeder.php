@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(AdminUser::class);
         $this->call(CertifcateTypeSeeder::class);
+        $this->call(GradeType::class);
     }
 }

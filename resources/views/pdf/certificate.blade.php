@@ -199,7 +199,6 @@
         </tr>
     </table>
 
-
 </div>
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="text-align:center;width: 650px;margin:auto">

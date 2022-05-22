@@ -30,7 +30,7 @@ trait InteractWithPdf
 
         $data['language_module'] ?
          $data['obtained'] = $data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck'] + $data['Sprachbausteine'] +$data['Mündlicher_Ausdruck'] :
-        $data['obtained'] = $data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck']  +$data['Mündlicher_Ausdruck'];
+        $data['obtained'] = $data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck']  + $data['Mündlicher_Ausdruck'];
 
 
         $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
