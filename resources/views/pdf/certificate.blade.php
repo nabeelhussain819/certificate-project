@@ -181,20 +181,26 @@
         <tr>
             <td> Gesamtpunkte</td>
             <td><span class="input-bg"></span>
-            @if($data['language_module'])
-             {{$data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck'] + $data['Sprachbausteine'] +$data['Mündlicher_Ausdruck']}}
-             @else
-             {{$data['Hörverstehen']  + $data['Schriftlicher_Ausdruck'] + $data['Leseverstehen'] +$data['Mündlicher_Ausdruck']}}
-             @endif
-              / {{$data['total_marks']}} punkte</td>
+            {{$data['obtained']}}/ {{$data['total_marks']}} punkte</td>
         </tr>
         <tr>
             <td>Prädikat</td>
-            <td><u>befriedigend (3)</u></td>
+            @foreach($data['grades'] as $item)
+            @if($data['obtained'] >= $item->min && $data['obtained'] <= $item->max)
+            <td>
+
+                <u>
+                        {{$item->name}}
+                </u>
+
+            </td>
+            @endif
+           @endforeach
         </tr>
     </table>
-</div>
 
+
+</div>
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="text-align:center;width: 650px;margin:auto">
 

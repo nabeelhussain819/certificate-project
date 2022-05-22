@@ -7,6 +7,7 @@ use App\Helpers\StringHelper;
 use App\Models\Certificate;
 use App\Models\CertificateType;
 use App\Models\Student;
+use App\Models\Grade;
 use App\Traits\InteractWithPdf;
 use App\Traits\InteractWithQrCode;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -55,6 +56,7 @@ class CertificateController extends Controller
             $certificate->fill($record);
 
             $certificate->save();
+
             $qrUrl = $this->generateQR($student, $certificate);
 
             $this->generatePdf($student, $certificate, $request->all());
