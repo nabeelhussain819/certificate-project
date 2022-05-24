@@ -230,7 +230,7 @@
 </div>
 <!-- column 5 -->
 <div class="border" style="padding: 0; margin-top:130px;">
-    <h3 style="text-align: right ;width: 300px;float:right;margin-right:70px; margin-top:30px;">Geschaftsuhrer</h3>
+    <h3 style="text-align: right ;width: 300px;float:right;margin-right:70px; margin-top:30px;">Geschäftsführer</h3>
 
     {{--    <img src="{{$data['qrUrl'] }}" style="max-width: 100px;float:left"/>--}}
     <img
