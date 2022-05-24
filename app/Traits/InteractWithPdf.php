@@ -32,7 +32,7 @@ trait InteractWithPdf
          $data['obtained'] = $data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck'] + $data['Sprachbausteine'] +$data['Mündlicher_Ausdruck'] :
         $data['obtained'] = $data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck']  + $data['Mündlicher_Ausdruck'];
 
-
+            $data['counter'] = 1;
         $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
         $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data' ));
         $content = $pdf->download()->getOriginalContent();
