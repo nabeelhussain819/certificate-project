@@ -25,11 +25,14 @@ return new class extends Migration {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->string('Leseverstehen')->nullable();
-            $table->string('Hörverstehen')->nullable();
-            $table->string('Sprachbausteine')->nullable();
-            $table->string('Schriftlicher_Ausdruck')->nullable();
-            $table->string('Mündlicher_Ausdruck')->nullable();
+            $table->string('listening')->nullable();
+            $table->string('reading')->nullable();
+            $table->string('language_module')->nullable();
+            $table->string('writing')->nullable();
+            $table->string('oral')->nullable();
+            $table->date('date_of_examination')->nullable();
+            $table->string('id_number')->nullable();
+            $table->string('date_of_issue')->nullable();
             $table->uuid('guid')->unique();
             $table->unsignedBigInteger('certificate_type_id')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
@@ -52,6 +55,6 @@ return new class extends Migration {
     {
         Schema::dropIfExists('certificate_types');
         Schema::dropIfExists('certificates');
-        Schema::dropIfExists('grades');
+
     }
 };

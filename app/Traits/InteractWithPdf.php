@@ -20,19 +20,18 @@ trait InteractWithPdf
         $certificate = $certificate->load('types');
         //  $data['grades']= Grade::select("name")->get();
 
-        $data['language_module'] = $certificate->types->has_module;
+        $data['has_module'] = $certificate->types->has_module;
         $data['typeName'] = $certificate->types->name;
         $data['qrUrl'] = "/storage/$student->guid/qr/$certificate->guid." . Certificate::QR_FORMAT;
         $data['alias'] = $certificate->types->alias;
         $data['punkte'] = $certificate->types->punkte;
         $data['total_marks'] = $certificate->types->total_marks;
         $data['grades'] = Grade::where('certificate_name',$data['alias'] )->get();
+        $data['date_of_examination'] = $certificate->date_of_examination->format("d.m.y");
+        $data['has_module'] ?
+         $data['obtained'] = $data['listening'] +  $data['reading'] + $data['writing'] + $data['language_module'] +$data['oral'] :
+        $data['obtained'] = $data['listening'] +  $data['writing'] + $data['reading']  + $data['oral'];
 
-        $data['language_module'] ?
-         $data['obtained'] = $data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck'] + $data['Sprachbausteine'] +$data['Mündlicher_Ausdruck'] :
-        $data['obtained'] = $data['Hörverstehen'] +  $data['Leseverstehen'] + $data['Schriftlicher_Ausdruck']  + $data['Mündlicher_Ausdruck'];
-
-            $data['counter'] = 1;
         $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
         $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data' ));
         $content = $pdf->download()->getOriginalContent();

@@ -150,28 +150,28 @@
     <table class="score-table " style="width: 400px;margin:auto">
 
         <tr>
-            <td>{{ $data['counter']++}}. Leseverstehen </td>
-            <td><span class="input-bg">{{$data['Leseverstehen']}} </span> / {{$data['punkte']}} punkte</td>
+            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Leseverstehen </td>
+            <td><span class="input-bg">{{$data['reading']}}</span> / {{$data['punkte']}} punkte</td>
         </tr>
         <tr>
-            <td> {{ $data['counter']++}}. Hörverstehen </td>
-            <td><span class="input-bg">{{$data['Hörverstehen']}} </span> / {{$data['punkte']}} punkte</td>
+            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Hörverstehen </td>
+            <td><span class="input-bg">{{$data['listening']}}  </span> / {{$data['punkte']}} punkte</td>
         </tr>
 
-
-        <tr>
-            <td>{{ $data['counter']++}}. Schriftlicher Ausdruck </td>
-            <td><span class="input-bg">{{$data['Schriftlicher_Ausdruck']}} </span> / {{$data['punkte']}} punkte</td>
-        </tr>
-        @if($data['language_module'])
+        @if($data['has_module'])
             <tr>
-                <td> {{ $data['counter']++}}. Sprachbausteine </td>
-                <td><span class="input-bg">{{$data['Sprachbausteine']}} </span>  @if($data['language_module'] && $data['punkte'] == 25) / 30 punkte @else /{{$data['punkte']}} punkte @endIf</td>
+                <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Sprachbausteine </td>
+                <td><span class="input-bg">{{$data['language_module']}} </span>  @if($data['language_module'] && $data['punkte'] == 25) / 30 punkte @else/ {{$data['punkte']}} punkte @endIf</td>
             </tr>
         @endif
         <tr>
-            <td>{{ $data['counter']++}}. Mündlicher Ausdruck </td>
-            <td><span class="input-bg">{{$data['Mündlicher_Ausdruck']}} </span> / {{$data['punkte']}} punkte</td>
+            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Schriftlicher Ausdruck </td>
+            <td><span class="input-bg">{{$data['writing']}} </span> / {{$data['punkte']}} punkte</td>
+        </tr>
+
+        <tr>
+            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Mündlicher Ausdruck </td>
+            <td><span class="input-bg">{{$data['oral']}} </span> / {{$data['punkte']}} punkte</td>
         </tr>
 
     </table>
@@ -208,20 +208,20 @@
         <tr>
             <td>
                 <div style="padding: 15px">
-                    <div class="input-bg"></div>
-                    Datum der Prüfung
+                    <div class="input-bg">{{$data['date_of_examination'] }} </div>
+                     Datum der Prüfung
                 </div>
             </td>
             <td>
                 <div style="padding: 15px">
-                    <div class="input-bg"></div>
+                    <div class="input-bg">{{$data['id_number']}}</div>
                     Ausweisnummer
                 </div>
             </td>
             <td>
                 <div style="padding: 15px">
-                    <div class="input-bg"></div>
-                    Ausstellungsdatum
+                    <div class="input-bg">{{$data['date_of_issue']}}</div>
+                   Ausstelldatum
                 </div>
             </td>
         </tr>

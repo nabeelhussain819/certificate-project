@@ -46,27 +46,27 @@ const studentsColumn = [
     {
         title: "Hörverstehen",
         key: "Hörverstehen",
-        dataIndex: "Hörverstehen",
+        dataIndex: "reading",
     },
     {
         title: "Schriftlicher Ausdruck",
         key: "Schriftlicher_Ausdruck",
-        dataIndex: "Schriftlicher_Ausdruck",
+        dataIndex: "writing",
     },
     {
         title: "Mündlicher Ausdruck",
         key: "Mündlicher_Ausdruck",
-        dataIndex: "Mündlicher_Ausdruck",
+        dataIndex: "oral",
     },
     {
         title: "Leseverstehen",
         key: "Leseverstehen",
-        dataIndex: "Leseverstehen",
+        dataIndex: "listening",
     },
     {
         title: "Sprachbausteine ",
         key: "Sprachbausteine",
-        dataIndex: "Sprachbausteine",
+        dataIndex: "language_module",
     },
     {
         title: "Action",

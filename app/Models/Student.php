@@ -80,7 +80,7 @@ class Student extends Base
     protected function dob(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->date_of_birth->format("d.M.Y")
+            get: fn($value) => $this->date_of_birth->format("d.m.y")
         );
     }
 

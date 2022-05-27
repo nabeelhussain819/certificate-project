@@ -37,9 +37,15 @@ class Certificate extends Base
     /**
      * @var array
      */
-    protected $fillable = ['student_id', 'certificate_type_id','Leseverstehen', 'Hörverstehen',  'Sprachbausteine', 'Schriftlicher_Ausdruck', 'guid', 'Mündlicher_Ausdruck', 'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
+    protected $fillable = ['student_id', 'certificate_type_id','listening', 'writing', 'language_module', 'reading', 'guid', 'oral','date_of_examination','id_number','date_of_issue' ,'created_by', 'updated_by', 'type', 'created_at', 'updated_at'];
 
     const QR_FORMAT = "png";
+
+    protected $casts = [
+        'date_of_examination' => 'date',
+    ];
+
+    protected $appends = [ 'ddp'];
 
     const TYPE = [
         ['id' => 1, 'alias' => 'a1', 'name' => 'A1', 'has_language' => false],
@@ -52,6 +58,13 @@ class Certificate extends Base
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+
+    protected function ddp(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->date_of_examination->format("d.m.y")
+        );
+    }
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'created_by');

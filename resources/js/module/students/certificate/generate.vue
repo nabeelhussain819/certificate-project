@@ -15,7 +15,7 @@
             </a-form-item>
             <a-form-item label="Leseverstehen">
                 <a-input v-decorator="[
-                    'Leseverstehen',
+                    'listening',
                     {
                         rules: [{ required: true }],
                     },
@@ -23,7 +23,7 @@
             </a-form-item>
             <a-form-item label="Hörverstehen">
                 <a-input v-decorator="[
-                    'Hörverstehen',
+                    'reading',
                     {
                         rules: [{ required: true }],
                     },
@@ -31,7 +31,7 @@
             </a-form-item>
             <a-form-item v-if="hasLanguageModule" label="Sprachbausteine">
                 <a-input v-decorator="[
-                    'Sprachbausteine',
+                    'language_module',
                     {
                         rules: [{ required: true }],
                     },
@@ -39,20 +39,49 @@
             </a-form-item>
             <a-form-item label="Schriftlicher Ausdruck">
                 <a-input v-decorator="[
-                    'Schriftlicher_Ausdruck',
+                    'writing',
                     {
                         rules: [{ required: true }],
                     },
                 ]"></a-input>
             </a-form-item>
             <a-form-item label="Mündlicher Ausdruck">
-                <a-input-number width="100%" v-decorator="[
-                    'Mündlicher_Ausdruck',
+                <a-input-number class="w-100" v-decorator="[
+                    'oral',
                     {
                         rules: [{ required: true }],
                     },
                 ]"></a-input-number>
             </a-form-item>
+            <a-form-item label="Datum der Prüfung">
+                <a-date-picker class="w-100" v-decorator="[
+                    'date_of_examination',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]" />
+            </a-form-item>
+            <a-form-item label="Ausweisnummer">
+                <a-input v-decorator="[
+                    'id_number',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]"></a-input>
+            </a-form-item>
+            <a-form-item label="Ausstelldatum">
+                <a-input v-decorator="[
+                    'date_of_issue',
+                    {
+                        rules: [{ required: true }],
+                    },
+                ]"></a-input>
+            </a-form-item>
+
+
+
+
+
             <a-form-item :label-col="{ span: 0 }" :wrapper-col="{ span: 24 }" class="text-right">
                 <ActionButton class="text-right" :is-created="isCreated" :loading="loading"
                     text="Generate Certificate" />
