@@ -26,11 +26,10 @@
             padding: 5px 0;
             /*border:1px solid red;*/
             margin: 0;
-            font-weight: bold;
         }
 
         body {
-
+            font-family: sans-serif;
         }
         .first-page{
             background-image: url('{{public_path('/images/pdf/water-mark.png')}}');
@@ -94,25 +93,25 @@
 <div style=" overflow: auto;"></div>
 <!-- column 1 -->
 <div class="clearfix" style="text-align: center;margin-top: -20px;">
-<h4 style="font-size: 35px; line-height: 1; text-align: center; margin-top:-70px;"> Worldwide Bildungswerk</h4><br />
-    <h3 style="
-            margin-top:-60px;
-            font-size: 75px;
+<h4 style="font-size: 30px; line-height: 1; text-align: center; margin-top:-70px;  font-weight: bold;"> Worldwide Bildungswerk</h4><br />
+    <p style="
+            margin-top:-25px;
+            font-size: 70px;
             line-height: 1;
-            text-align: center;" class="border">
-
+            text-align: center;" >
         Zertifikat
-    </h3>
+    </p>
 
-    <h5 style="
+    <p style="
          margin:0;
-          margin-top:-60px;
+          margin-top:-50px;
          font-size: 30px;
           ">
-        Deutsch {{$data['alias']}}
+                Deutsch {{$data['alias']}}
+
         {{--        Deutsch A1--}}
-    </h5>
-    <h5 style="font-size: 30px; margin-top:-30px;  margin:0;">({{$data['typeName']}})</h5>
+    </p>
+    <p style="font-size: 25px; margin-top:-30px;  margin:0;">({{$data['typeName']}})</p>
 </div>
 
 
@@ -120,27 +119,23 @@
     <table class="detail-table" style="width: 450px;margin:auto">
         <tr>
             <td>
-                <div> {{ $student->first_name }}</div>
-
-                <strong>Name</strong>
+                <div style="border-bottom:1px solid black;"> {{ $student->first_name }}</div>
+                Name
             </td>
             <td>
-                <div>{{ $student->last_name }}</div>
-                <strong>Vorname</strong>
+                <div style="border-bottom:1px solid black;">{{ $student->last_name }}</div>
+               Vorname
             </td>
         </tr>
         <tr>
-            <td>
-                <div
-                    style=""> {{ $student->dob }}</div>
-
-
-                <strong>Geburtsdatum</strong>
+       <td>
+          <div style="border-bottom:1px solid black;">{{ $student->dob }}</div>
+                Geburtsdatum
             </td>
             <td>
                 <div
-                    style="">{{ $student->place_of_birth }}</div>
-                <strong>Geburtsort</strong>
+                    style="border-bottom:1px solid black;">{{ $student->place_of_birth }}</div>
+                Geburtsort
             </td>
         </tr>
     </table>
@@ -148,30 +143,30 @@
 
 <div style="margin-top: 20px;text-align: center">
     <table class="score-table " style="width: 400px;margin:auto">
-
         <tr>
-            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Leseverstehen </td>
-            <td><span class="input-bg">{{$data['reading']}}</span> / {{$data['punkte']}} punkte</td>
+            <td>
+              <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Leseverstehen</td>
+            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['reading']}}</span> / {{$data['punkte']}} Punkte</td>
         </tr>
         <tr>
             <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Hörverstehen </td>
-            <td><span class="input-bg">{{$data['listening']}}  </span> / {{$data['punkte']}} punkte</td>
+            <td><span class="input-bg " style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['listening']}}</span> /  {{$data['punkte']}} Punkte</td>
         </tr>
 
         @if($data['has_module'])
             <tr>
                 <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Sprachbausteine </td>
-                <td><span class="input-bg">{{$data['language_module']}} </span>  @if($data['language_module'] && $data['punkte'] == 25) / 30 punkte @else/ {{$data['punkte']}} punkte @endIf</td>
+                <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['language_module']}} </span>  @if($data['language_module'] && $data['punkte'] == 25) / 30 Punkte @else/ {{$data['punkte']}} Punkte @endIf</td>
             </tr>
         @endif
         <tr>
             <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Schriftlicher Ausdruck </td>
-            <td><span class="input-bg">{{$data['writing']}} </span> / {{$data['punkte']}} punkte</td>
+            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['writing']}} </span> / {{$data['punkte']}} Punkte</td>
         </tr>
 
         <tr>
             <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Mündlicher Ausdruck </td>
-            <td><span class="input-bg">{{$data['oral']}} </span> / {{$data['punkte']}} punkte</td>
+            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['oral']}} </span> / {{$data['punkte']}} Punkte</td>
         </tr>
 
     </table>
@@ -182,8 +177,7 @@
 
         <tr>
             <td> Gesamtpunkte</td>
-            <td><span class="input-bg"></span>
-            {{$data['obtained']}}/ {{$data['total_marks']}} punkte</td>
+            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['obtained']}}</span> / {{$data['total_marks']}} punkte</td>
         </tr>
         <tr>
             <td>Prädikat</td>
@@ -208,19 +202,19 @@
         <tr>
             <td>
                 <div style="padding: 15px">
-                    <div class="input-bg">{{$data['date_of_examination'] }} </div>
+                    <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['date_of_examination'] }} </div>
                      Datum der Prüfung
                 </div>
             </td>
             <td>
                 <div style="padding: 15px">
-                    <div class="input-bg">{{$data['id_number']}}</div>
+                    <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['id_number']}}</div>
                     Ausweisnummer
                 </div>
             </td>
             <td>
                 <div style="padding: 15px">
-                    <div class="input-bg">{{$data['date_of_issue']}}</div>
+                    <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['date_of_issue']}}</div>
                    Ausstelldatum
                 </div>
             </td>
@@ -229,8 +223,8 @@
     </table>
 </div>
 <!-- column 5 -->
-<div class="border" style="padding: 0; margin-top:130px;">
-    <h3 style="text-align: right ;width: 300px;float:right;margin-right:70px; margin-top:30px;">Geschäftsführer</h3>
+<div class="border" style="padding: 0; margin-top:100px;">
+    <p style="text-align: right ;width: 300px;float:right;margin-right:70px; margin-top:10px;">Geschäftsführer</p>
 
     {{--    <img src="{{$data['qrUrl'] }}" style="max-width: 100px;float:left"/>--}}
     <img
@@ -277,9 +271,9 @@
                 <td class="{{$data['alias'] == 'A1' ?'bold' :''}}">
                     <p style="text-align: center;margin:0;padding:0">
                     @if($data['alias'] == 'A1') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
-                    @endif A1: Anfänger
+                    @endif A1 Anfänger
                   </p>
-                    <p style=" font-size: 11px">
+                       <p style="font-size: 11px;text-align: justify;  margin-top:0px;">
                         Kann vertraute, alltägliche Ausdrücke und ganz einfache Sätze
                         verstehen und verwenden, die auf die Befriedigung konkreter
                         Bedürfnisse zielen. Kann sich und andere vorstellen und anderen
@@ -295,7 +289,7 @@
                     @if($data['alias'] == 'A2') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
                     @endif A2 Grundlegende Kenntnisse
                     </p>
-                    <p style=" font-size: 11px">
+                    <p style=" font-size: 11px; text-align: justify;margin-left:10px; margin-top:0px;">
                         Kann vertraute, alltägliche Ausdrücke und ganz einfache
                         Sätze verstehen und verwenden, die auf die Befriedigung
                         konkreter Bedürfnisse zielen. Kann sich und andere
@@ -347,13 +341,13 @@
         <table>
             <tr>
                 <td class="{{$data['alias'] == 'B1' ?'bold' :''}}">
-                    <p style="text-align: center; padding:5px;margin: 5px;">
+                    <p style="text-align: center; ">
 
                         @if($data['alias'] == 'B1') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
-                        @endif B1: Fortgeschrittene Sprachverwendung
+                        @endif B1 Fortgeschrittene Sprachverwendung
 
                     </p>
-                    <p style="font-size: 11px">
+                    <p style="font-size: 11px; text-align: justify; margin-top:-11px;">
                         Kann die Hauptpunkte verstehen, wenn klare Standardsprache
                         verwendet wird und wenn es um vertraute Dinge aus Arbeit, Schule,
                         Freizeit usw. geht. Kann die meisten Situationen bewältigen, denen
@@ -365,12 +359,12 @@
                     </p>
                 </td>
                 <td class="{{$data['alias'] == 'B2' ?'bold' :''}}">
-                    <p style="text-align: center; padding:5px;margin: 5px;">
+                    <p style="text-align: center;">
                     @if($data['alias'] == 'B2') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> @endif
-                  B2: Selbständige Sprachverwendung
+                  B2 Selbständige Sprachverwendung
 
                     </p>
-                    <p style="font-size: 11px">
+                    <p style="font-size: 11px; text-align: justify; margin-left:10px; margin-top:-11px;">
                         Kann die Hauptinhalte komplexer Texte zu konkreten und abstrakten
                         Themen verstehen; versteht im eigenen Spezialgebiet auch
                         Fachdiskussionen. Kann sich so spontan und fließend verständigen,
@@ -386,7 +380,7 @@
         {{-- <div style="display: flex; justify-content: center">
             <div style="text-align: justify; padding-right: 2%; width: 50%;">
                 <h5 style="text-align: center; margin-bottom: 0px">
-                    B1: Fortgeschrittene Sprachverwendung
+                    B1 Fortgeschrittene Sprachverwendung
                 </h5>
                 <p style="font-size: 11px">
                     Kann die Hauptpunkte verstehen, wenn klare Standardsprache
@@ -401,7 +395,7 @@
             </div>
             <div style="text-align: justify; width: 50%;">
                 <h5 style="text-align: center; margin-bottom: 0px">
-                    B2: Selbständige Sprachverwendung
+                    B2 Selbständige Sprachverwendung
                 </h5>
                 <p style="font-size: 11px">
                     Kann die Hauptinhalte komplexer Texte zu konkreten und abstrakten
@@ -422,11 +416,11 @@
         <table>
             <tr>
                 <td class="{{$data['alias'] == 'C1' ?'bold' :''}}">
-                    <p style="text-align: center;padding:5px;margin: 5px;">
+                    <p style="text-align: center;">
                     @if($data['alias'] == 'C1') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
-                    @endif   C1: Fachkundige Sprachkenntnisse
+                    @endif   C1 Fachkundige Sprachkenntnisse
                     </p>
-                    <p style="font-size: 11px">
+                    <p style="font-size: 11px;text-align: justify; margin-top:-10px;">
                         Kann ein breites Spektrum anspruchsvoller, längerer Texte
                         verstehen und auch implizite Bedeutungen erfassen. Kann sich
                         spontan und fließend ausdrücken, ohne öfter deutlich erkennbar
@@ -439,11 +433,11 @@
                     </p>
                 </td>
                 <td class="{{$data['alias'] == 'C2' ?'bold' :''}}">
-                    <p style="text-align: center;padding:5px;margin: 5px;">
+                    <p style="text-align: center;margin-top:-2px;">
                     @if($data['alias'] == 'C2') <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">
-                    @endif C2: Annähernd muttersprachliche Kenntnisse
+                    @endif C2 Annähernd muttersprachliche Kenntnisse
                     </p>
-                    <p style="font-size: 11px;">
+                    <p style="font-size: 11px; text-align: justify; margin-left:10px; margin-top:-10px;">
                         Kann praktisch alles, was er/sie liest oder hört, mühelos
                         verstehen. Kann Informationen aus verschiedenen schriftlichen und
                         mündlichen Quellen zusammenfassen und dabei Begründungen und
