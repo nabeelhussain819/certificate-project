@@ -33,6 +33,7 @@ trait InteractWithPdf
         $data['obtained'] = $data['listening'] +  $data['writing'] + $data['reading']  + $data['oral'];
 
         $fileName = $student->guid . '/pdf/' . $certificate->guid . '.pdf';
+
         $pdf = Pdf::loadView('pdf.certificate', compact('student', 'data' ));
         $content = $pdf->download()->getOriginalContent();
         Storage::disk('public')->put($fileName, $content);

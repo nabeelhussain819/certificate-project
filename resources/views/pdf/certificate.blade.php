@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
     <style>
+
         .clearfix::after {
             content: " ";
             /* Older browser do not support empty content */
@@ -30,12 +31,26 @@
 
         body {
             font-family: sans-serif;
+
+        }
+        @page {
+            size:A4 ;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin: 0;
+            -webkit-print-color-adjust: exact;
         }
         .first-page{
+            padding-top:40px;
+            padding-right:50px;
+            padding-left:50px;
             background-image: url('{{public_path('/images/pdf/water-mark.png')}}');
             background-repeat: no-repeat;
             background-position: right top;
             background-attachment: fixed;
+
         }
         .border {
             /*border: 1px solid red;*/
@@ -47,7 +62,11 @@
         /*    padding: 5px 15px*/
         /*}*/
             .second-page{
-            background-image: url('{{public_path('/images/pdf/water-mark.png')}}');
+            padding-top:20px;
+            padding-right:40px;
+            padding-left:40px;
+            padding-bottom: 0px;
+            background-image: url('{{public_path('/images/pdf/flip-water-mark.png')}}');
             background-repeat: no-repeat;
             background-position: left top;
             background-attachment: fixed;
@@ -67,6 +86,7 @@
         .bold {
             font-weight: bolder;
         }
+
     </style>
 
 </head>
@@ -74,173 +94,175 @@
 <body>
 <!-- Section One -->
 <div class="first-page">
-<div class="clearfix">
-    <div style="float:left; width:600px ; overflow: auto;"><img
-            width="120px"
-            src="{{ public_path('/images/pdf/main-logo2.JPG') }}" style="display:block;max-width: 550px"
-            alt="logo1"/>
-    </div>
-
-    <div>
-        <div style="float:right; width:150px;  overflow: auto;"><img
-                src="{{ public_path('/images/pdf/star-german.png') }}" style="display:block;max-width: 400px"
+    <div class="clearfix">
+        <div style="float:left; width:600px ; overflow: auto;"><img
+                width="120px"
+                src="{{ public_path('/images/pdf/main-logo2.JPG') }}" style="display:block;max-width: 550px;"
                 alt="logo1"/>
         </div>
 
+        <div>
+            <div style="float:right; width:150px;  overflow: auto;"><img
+                    src="{{ public_path('/images/pdf/star-german.png') }}" style="display:block;max-width: 400px"
+                    alt="logo1"/>
+            </div>
+
+        </div>
+
+    </div>
+    <div style=" overflow: auto;"></div>
+    <!-- column 1 -->
+    <div class="clearfix" style="text-align: center;margin-top: -20px;">
+    <h4 style="font-size: 30px; line-height: 1; text-align: center; margin-top:-70px;  font-weight: bold;"> Worldwide Bildungswerk</h4><br />
+        <p style="
+                margin-top:-25px;
+                font-size: 70px;
+                font-weight: bold;
+                line-height: 1;
+                text-align: center;" >
+            Zertifikat
+        </p>
+
+        <p style="
+            margin:0;
+            margin-top:-50px;
+            font-size: 30px;
+            font-weight: bold;
+            ">
+                    Deutsch {{$data['alias']}}
+
+            {{--        Deutsch A1--}}
+        </p>
+        <p style="font-size: 25px; margin-top:-30px;font-weight: bold;  margin:0;">({{$data['typeName']}})</p>
     </div>
 
-</div>
-<div style=" overflow: auto;"></div>
-<!-- column 1 -->
-<div class="clearfix" style="text-align: center;margin-top: -20px;">
-<h4 style="font-size: 30px; line-height: 1; text-align: center; margin-top:-70px;  font-weight: bold;"> Worldwide Bildungswerk</h4><br />
-    <p style="
-            margin-top:-25px;
-            font-size: 70px;
-            line-height: 1;
-            text-align: center;" >
-        Zertifikat
-    </p>
 
-    <p style="
-         margin:0;
-          margin-top:-50px;
-         font-size: 30px;
-          ">
-                Deutsch {{$data['alias']}}
-
-        {{--        Deutsch A1--}}
-    </p>
-    <p style="font-size: 25px; margin-top:-30px;  margin:0;">({{$data['typeName']}})</p>
-</div>
-
-
-<div style="margin-top: 20px;text-align: center">
-    <table class="detail-table" style="width: 450px;margin:auto">
-        <tr>
-            <td>
-                <div style="border-bottom:1px solid black;"> {{ $student->first_name }}</div>
-                Name
-            </td>
-            <td>
-                <div style="border-bottom:1px solid black;">{{ $student->last_name }}</div>
-               Vorname
-            </td>
-        </tr>
-        <tr>
-       <td>
-          <div style="border-bottom:1px solid black;">{{ $student->dob }}</div>
-                Geburtsdatum
-            </td>
-            <td>
-                <div
-                    style="border-bottom:1px solid black;">{{ $student->place_of_birth }}</div>
-                Geburtsort
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div style="margin-top: 20px;text-align: center">
-    <table class="score-table " style="width: 400px;margin:auto">
-        <tr>
-            <td>
-              <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Leseverstehen</td>
-            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['reading']}}</span> / {{$data['punkte']}} Punkte</td>
-        </tr>
-        <tr>
-            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Hörverstehen </td>
-            <td><span class="input-bg " style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['listening']}}</span> /  {{$data['punkte']}} Punkte</td>
-        </tr>
-
-        @if($data['has_module'])
+    <div style="margin-top: 20px;text-align: center">
+        <table class="detail-table" style="width: 450px;margin:auto">
             <tr>
-                <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Sprachbausteine </td>
-                <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['language_module']}} </span>  @if($data['language_module'] && $data['punkte'] == 25) / 30 Punkte @else/ {{$data['punkte']}} Punkte @endIf</td>
+                <td style="font-weight: bold;">
+                    <div style="border-bottom:1px solid black; "> {{ $student->first_name }}</div>
+                    Name
+                </td>
+                <td style="font-weight: bold;">
+                    <div style="border-bottom:1px solid black;">{{ $student->last_name }}</div>
+                Vorname
+                </td>
             </tr>
-        @endif
-        <tr>
-            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Schriftlicher Ausdruck </td>
-            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['writing']}} </span> / {{$data['punkte']}} Punkte</td>
-        </tr>
+            <tr>
+        <td style="font-weight: bold;">
+            <div style="border-bottom:1px solid black;">{{ $student->dob }}</div>
+                    Geburtsdatum
+                </td>
+                <td style="font-weight: bold;">
+                    <div
+                        style="border-bottom:1px solid black;">{{ $student->place_of_birth }}</div>
+                    Geburtsort
+                </td>
+            </tr>
+        </table>
+    </div>
 
-        <tr>
-            <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Mündlicher Ausdruck </td>
-            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['oral']}} </span> / {{$data['punkte']}} Punkte</td>
-        </tr>
+    <div style="margin-top: 20px;text-align: center">
+        <table class="score-table " style="width: 400px;margin:auto">
+            <tr style="font-weight: bold;">
+                <td>
+                <img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Leseverstehen</td>
+                <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['reading']}}</span> / {{$data['punkte']}} Punkte</td>
+            </tr>
+            <tr style="font-weight: bold;">
+                <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Hörverstehen </td>
+                <td><span class="input-bg " style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['listening']}}</span> /  {{$data['punkte']}} Punkte</td>
+            </tr>
 
-    </table>
-</div>
-
-<div style="margin-top: 20px;text-align: center">
-    <table class="score-table " style="width: 400px;margin:auto">
-
-        <tr>
-            <td> Gesamtpunkte</td>
-            <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['obtained']}}</span> / {{$data['total_marks']}} punkte</td>
-        </tr>
-        <tr>
-            <td>Prädikat</td>
-            @foreach($data['grades'] as $item)
-            @if($data['obtained'] >= $item->min && $data['obtained'] <= $item->max)
-            <td>
-
-                <u>
-                        {{$item->name}}
-                </u>
-
-            </td>
+            @if($data['has_module'])
+                <tr style="font-weight: bold;">
+                    <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset="">  Sprachbausteine </td>
+                    <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['language_module']}} </span>  @if($data['language_module'] && $data['punkte'] == 25) / 30 Punkte @else/ {{$data['punkte']}} Punkte @endIf</td>
+                </tr>
             @endif
-           @endforeach
-        </tr>
-    </table>
+            <tr style="font-weight: bold;">
+                <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Schriftlicher Ausdruck </td>
+                <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['writing']}} </span> / {{$data['punkte']}} Punkte</td>
+            </tr >
 
-</div>
-<div style="margin-top: 20px;text-align: center">
-    <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+            <tr style="font-weight: bold;">
+                <td><img src="{{ public_path('/images/pdf/tick.png') }}" style="height:8px;widht:8px;" alt="" srcset=""> Mündlicher Ausdruck </td>
+                <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['oral']}} </span> / {{$data['punkte']}} Punkte</td>
+            </tr>
 
-        <tr>
-            <td>
-                <div style="padding: 15px">
-                    <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['date_of_examination'] }} </div>
-                     Datum der Prüfung
-                </div>
-            </td>
-            <td>
-                <div style="padding: 15px">
-                    <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['id_number']}}</div>
-                    Ausweisnummer
-                </div>
-            </td>
-            <td>
-                <div style="padding: 15px">
-                    <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['date_of_issue']}}</div>
-                   Ausstelldatum
-                </div>
-            </td>
-        </tr>
+        </table>
+    </div>
 
-    </table>
-</div>
-<!-- column 5 -->
-<div class="border" style="padding: 0; margin-top:100px;">
-    <p style="text-align: right ;width: 300px;float:right;margin-right:70px; margin-top:10px;">Geschäftsführer</p>
+    <div style="margin-top: 20px;text-align: center">
+        <table class="score-table " style="width: 400px;margin:auto">
 
-    {{--    <img src="{{$data['qrUrl'] }}" style="max-width: 100px;float:left"/>--}}
-    <img
-        src="{{public_path() . $data['qrUrl'] }}"
-        style="max-width: 100px;float:left"/>
-        <!-- <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="max-width: 100px;float:left;"/> -->
-</div>
+            <tr style="font-weight: bold;">
+                <td> Gesamtpunkte</td>
+                <td><span class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['obtained']}}</span> / {{$data['total_marks']}} Punkte</td>
+            </tr>
+            <tr style="font-weight: bold;">
+                <td>Prädikat</td>
+                @foreach($data['grades'] as $item)
+                @if($data['obtained'] >= $item->min && $data['obtained'] <= $item->max)
+                <td>
+
+                    <u>
+                            {{$item->name}}
+                    </u>
+
+                </td>
+                @endif
+            @endforeach
+            </tr>
+        </table>
+
+    </div>
+    <div style="margin-top: 20px;text-align: center">
+        <table class="score-table " style="text-align:center;width: 650px;margin:auto">
+
+            <tr style="font-weight: bold;">
+                <td>
+                    <div style="padding: 15px">
+                        <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['date_of_examination'] }} </div>
+                        Datum der Prüfung
+                    </div>
+                </td>
+                <td>
+                    <div style="padding: 15px">
+                        <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['id_number']}}</div>
+                        Ausweisnummer
+                    </div>
+                </td>
+                <td>
+                    <div style="padding: 15px">
+                        <div class="input-bg" style="padding-right:15px;padding-left:15px; border-bottom:1px solid black;">{{$data['date_of_issue']}}</div>
+                    Ausstelldatum
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <!-- column 5 -->
+    <div class="border" style="padding: 0; margin-top:150px;">
+        <p style="text-align: right ;width: 300px;float:right;margin-right:70px; margin-top:70px;font-weight: bold;">Geschäftsführer</p>
+
+        {{--    <img src="{{$data['qrUrl'] }}" style="max-width: 100px;float:left"/>--}}
+        <img
+            src="{{public_path() . $data['qrUrl'] }}"
+            style="max-width: 100px;float:left"/>
+            <!-- <img src="{{ public_path('/images/pdf/flag.JPG') }}" style="max-width: 100px;float:left;"/> -->
+    </div>
 
 </div>
 
 <div style="page-break-before:always">&nbsp;</div>
 <!-- Section two -->
-<div class="second-page" style="padding: 0px; font-family: sans-serif;max-height: 75%;">
+<div class="second-page" style="font-family: sans-serif;max-height: 75%;">
     <div>
         <h3 style="text-align: center;padding:5px;margin: 5px">An die zuständigen Behörden</h3>
-        <p style="text-align: justify; font-size: 11px">
+        <p style="text-align: justify; font-size: 12px">
             Mit diesem Zertifikat wird bestätigt, dass der genannte Teilnehmer
             dieses Sprachkurses, die entsprechende Prüfung ordnungsgemäß abgelegt
             hat, und dass die Sprachprüfung bei Auswertung der zu prüfenden Teile
@@ -504,12 +526,12 @@
             <td>
             <div style="text-align: left">
                 <img
-                    src="{{ public_path('/images/pdf/Capture.PNG') }}" style="display:block;max-width: 105px"
+                    src="{{ public_path('/images/pdf/Capture.PNG') }}" style="display:block;min-width: 125px; padding-top:80px"
                     alt="logo-2"/>
                 <img
-                    src="{{ public_path('/images/pdf/footer-tet-logo.png') }}" style="display:block;max-width: 105px"
+                    src="{{ public_path('/images/pdf/footer-tet-logo.png') }}" style="display:block;max-width: 125px; padding-top:80px"
                     alt="logo-2"/>
-                    </div>
+                </div>
             </td>
             <td>
                 {{--                <div style="font-size: 11px;">--}}
@@ -526,7 +548,7 @@
             <td>
                 <div style="text-align: right">
                     <img
-                        src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 120px"
+                        src="{{ public_path('/images/pdf/star-logo.jpg') }}" style="display:block;max-width: 120px;margin-top:80px"
                         alt="logo2"/>
                 </div>
 
