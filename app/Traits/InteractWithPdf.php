@@ -27,7 +27,7 @@ trait InteractWithPdf
         $data['punkte'] = $certificate->types->punkte;
         $data['total_marks'] = $certificate->types->total_marks;
         $data['grades'] = Grade::where('certificate_name',$data['alias'] )->get();
-        $data['date_of_examination'] = $certificate->date_of_examination->format("d.m.y");
+        $data['date_of_examination'] = $certificate->date_of_examination->format("d.m.Y");
         $data['has_module'] ?
          $data['obtained'] = $data['listening'] +  $data['reading'] + $data['writing'] + $data['language_module'] +$data['oral'] :
         $data['obtained'] = $data['listening'] +  $data['writing'] + $data['reading']  + $data['oral'];
